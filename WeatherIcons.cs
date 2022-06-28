@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This software is licensed under the MIT License
  * https://github.com/GStefanowich/SDV-Forecaster
  *
@@ -23,19 +23,16 @@
  * SOFTWARE.
  */
 
-using StardewValley.Objects;
+using StardewValley;
 
 namespace ForecasterText {
-    /// <summary>
-    /// Virtual TV exists as an extension of TV
-    /// Why? Because <see cref="TV.getRerunWeek"/> is a protected method.
-    /// By creating our own virtual TV we can introduce an Accessor Method!
-    /// </summary>
-    public sealed class VirtualTV : TV {
-        public VirtualTV() : base() {}
-        
-        public int GetRerunWeek() {
-            return base.getRerunWeek();
-        }
+    public enum WeatherIcons {
+        SUN = Game1.weather_sunny,
+        RAIN = Game1.weather_rain,
+        //DEBRIS = Game1.weather_debris,
+        LIGHTNING = Game1.weather_lightning,
+        FESTIVAL = Game1.weather_festival,
+        SNOW = Game1.weather_snow,
+        WEDDING = Game1.weather_wedding
     }
 }

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This software is licensed under the MIT License
  * https://github.com/GStefanowich/SDV-Forecaster
  *
@@ -23,19 +23,38 @@
  * SOFTWARE.
  */
 
-using StardewValley.Objects;
-
-namespace ForecasterText {
-    /// <summary>
-    /// Virtual TV exists as an extension of TV
-    /// Why? Because <see cref="TV.getRerunWeek"/> is a protected method.
-    /// By creating our own virtual TV we can introduce an Accessor Method!
-    /// </summary>
-    public sealed class VirtualTV : TV {
-        public VirtualTV() : base() {}
+namespace ForecasterText.Objects {
+    public sealed class Blink {
+        private const float MAX = 1.0f;
+        private const float MIN = 0.75f;
+        public const float SHIFT = 0.01f;
         
-        public int GetRerunWeek() {
-            return base.getRerunWeek();
+        private float Value = Blink.MAX - Blink.SHIFT;
+        
+        private bool Increasing = true;
+        private bool Decreasing {
+            get => !this.Increasing;
+            set => this.Increasing = !value;
+        }
+        
+        public float Scale => this.Next();
+        
+        public void Reset() {
+            this.Value = Blink.MAX - Blink.SHIFT;
+            this.Increasing = true;
+        }
+        private float Next() {
+            if (this.Increasing) {
+                this.Value += Blink.SHIFT;
+                if (this.Value >= Blink.MAX)
+                    this.Decreasing = true;
+            } else {
+                this.Value -= Blink.SHIFT;
+                if (this.Value <= Blink.MIN)
+                    this.Increasing = true;
+            }
+            
+            return this.Value;
         }
     }
 }
