@@ -69,8 +69,8 @@ namespace ForecasterText {
             this.AddWeatherDropdown(
                 () => this.ModConfig.StardewValleyWeather,
                 display => this.ModConfig.StardewValleyWeather = display,
-                "Stardew Valley",
-                "When to show the weather for Stardew Valley"
+                "Pelican Town",
+                "When to show the weather for Pelican Town"
             );
             
             this.AddWeatherDropdown(

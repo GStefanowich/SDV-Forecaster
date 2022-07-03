@@ -77,9 +77,8 @@ namespace ForecasterText {
             return this.GetTownForecast(!Game1.IsMasterGame ? Game1.getWeatherModificationsForDate(date, Game1.netWorldState.Value.WeatherForTomorrow) : Game1.getWeatherModificationsForDate(date, Game1.weatherForTomorrow));
         }
         
-        public string GetTownForecast(int weather) {
-            return this.GetWeatherInformation(this.Config.StardewValleyWeather, "Pelican Town forecast", weather);
-        }
+        public string GetTownForecast(int weather)
+            => this.GetWeatherInformation(this.Config.StardewValleyWeather, "Pelican Town forecast", weather);
         
         private string GetIslandForecast() {
             if (!ModEntry.PlayerBeenToIsland())
@@ -161,7 +160,7 @@ namespace ForecasterText {
         }
         
         public string GetDailyLuck(SpiritMoods mood)
-            => $"[{this.Config.SpiritsEmoji}]spirits are[{this.ConfigManager.GetEmoji(mood)}]today";
+            => $"[{this.Config.SpiritsEmoji}]are[{this.ConfigManager.GetEmoji(mood)}]today";
         
         private SpiritMoods GetSpiritMood(Farmer who) {
             if (who.team.sharedDailyLuck.Value == -0.12)
