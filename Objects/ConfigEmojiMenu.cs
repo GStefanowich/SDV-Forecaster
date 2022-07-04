@@ -147,7 +147,6 @@ namespace ForecasterText.Objects {
                     Game1.playSound("Cowboy_Footstep");
                 
                 this.PageIndex = Math.Min(this.PageIndex + ConfigEmojiMenu.SHIFT, ConfigEmojiMenu.SHIFT * (int)(Math.Floor((double)this.TotalEmojis / ConfigEmojiMenu.SHIFT)));
-                //this.PageIndex += ConfigEmojiMenu.SHIFT;
                 this.DownArrow.scale = 0.75f;
                 
                 this.ResetIcons();

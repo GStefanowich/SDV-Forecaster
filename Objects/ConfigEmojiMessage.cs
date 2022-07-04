@@ -91,7 +91,7 @@ namespace ForecasterText.Objects {
             try {
                 // Clear the snippets
                 this.Snippets.Clear();
-                this.Snippets.Add(new ChatSnippet("> TV: ", this.Language));
+                this.Snippets.Add(new ChatSnippet("> ", this.Language));
                 if (this.Setter is {} renderer && renderer(this) is {} ienumerable)
                     this.Snippets.AddRange(ienumerable);
             } finally {
