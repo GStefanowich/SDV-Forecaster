@@ -34,8 +34,7 @@ namespace ForecasterText {
     public sealed class VirtualTV : TV {
         public VirtualTV() : base() {}
         
-        public int GetRerunWeek() {
-            return base.getRerunWeek();
-        }
+        public int GetRerunWeek()
+            => base.getRerunWeek();
     }
 }

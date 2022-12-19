@@ -1,7 +1,9 @@
-﻿/.git/
-/.idea/
-/assets/
 /Stardew Valley/
-/packages/
-/obj/
-/bin/
+[Aa]ssets
+[Pp]ackages
+[Oo]bj
+[Bb]in
+
+.idea
+
+*.user
