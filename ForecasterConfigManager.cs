@@ -150,8 +150,7 @@ namespace ForecasterText {
                 // Multiplayer options
                 this.AddPageLink(
                     "child",
-                    "Multiplayer",
-                    "Customize the mod options that are used for other players"
+                    "multiplayer"
                 );
                 
                 this.AddBoolOption(
@@ -337,9 +336,11 @@ namespace ForecasterText {
             }
         }
         
-        private void AddPageLink(string page, string text, string tooltip)
-            => this.AddPageLink(page, () => text, () => tooltip);
-        
+        private void AddPageLink(string page, string text) {
+            IConfT9N t9N = this.Translation(text);
+            this.AddPageLink(page, t9N.Get, t9N.GetDesc);
+        }
+
         private void AddPageLink(string page, Func<string> text, Func<string> tooltip)
             => this.ConfigMenu?.AddPageLink(this.Manifest, page, text, tooltip);
         
