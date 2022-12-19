@@ -98,7 +98,8 @@ namespace ForecasterText {
             this.AddBoolOption(
                 () => config.ShowBirthdays,
                 value => config.ShowBirthdays = value,
-                "birthdays"
+                "birthdays",
+                "birthdays.desc2"
             );
             this.AddBoolOption(
                 () => config.UseVillagerNames,
@@ -278,7 +279,10 @@ namespace ForecasterText {
             IConfT9N t9N = this.Translation(name);
             this.AddBoolOption(getValue, setValue, t9N.Get, t9N.GetDesc);
         }
-        
+        private void AddBoolOption(Func<bool> getValue, Action<bool> setValue, string name, string tooltip) {
+            IConfT9N t9N = this.Translation(name, tooltip);
+            this.AddBoolOption(getValue, setValue, t9N.Get, t9N.GetDesc);
+        }
         private void AddBoolOption(Func<bool> getValue, Action<bool> setValue, Func<string> name, Func<string> tooltip = null)
             => this.ConfigMenu?.AddBoolOption(this.Manifest, getValue, setValue, name, tooltip);
         
