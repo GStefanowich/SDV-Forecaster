@@ -4,15 +4,17 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
-using StardewValley;
 using StardewValley.Menus;
+using static StardewValley.LocalizedContentManager;
 
 namespace ForecasterText.Objects {
     internal class ConfigEmojiMessage : ConfigEmojiComponent {
         private readonly Mod Mod;
         private readonly ConfigEmojiMenu Parent;
         private readonly List<ChatSnippet> Snippets = new();
-        private readonly LocalizedContentManager.LanguageCode Language = LocalizedContentManager.LanguageCode.en;
+        
+        private LanguageCode Language => this.Mod.Helper.Translation.LocaleEnum;
+        
         public float Alpha = 1f;
         public Color Color = Color.Black;
         
@@ -104,6 +106,7 @@ namespace ForecasterText.Objects {
             if (raw is not {Length: >0})
                 return null;
             
+            Console.WriteLine(raw);
             StringBuilder builder = new();
             List<ChatSnippet> list = new();
             
