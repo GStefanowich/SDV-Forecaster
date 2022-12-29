@@ -66,9 +66,10 @@ namespace ForecasterText {
                 save: () => this.Mod.Helper.WriteConfig(this.ModConfig)
             );
             
-            ForecasterConfig multiplayerConfig = this.MultiplayerConfig;
+            // TODO: Re-Enable multiplayer config display once message format for sending is figured out
+            //ForecasterConfig multiplayerConfig = this.MultiplayerConfig;
             this.InitializePage(this.ModConfig);
-            this.InitializePage(multiplayerConfig, "child");
+            //this.InitializePage(multiplayerConfig, "child");
         }
         
         private void InitializePage(ForecasterConfig config, string page = null) {
