@@ -23,4 +23,4 @@ Thanks so much to the following users for contributing translations to this mod:
 | :portugal: Portuguese | [@smercuryj](https://www.github.com/smercuryj) |
 | :ru: Russian          | [@fixn0ll](https://www.github.com/fixn0ll)     |
 | :es: Spanish          | [@AlixNauts](https://www.github.com/AlixNauts) | 
-| :tk: Turkish          | N/A                                            |
+| :tr: Turkish          | N/A                                            |
