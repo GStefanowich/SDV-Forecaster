@@ -6,8 +6,8 @@
 	"tv.recipe": "{{icon}} Научитесь делать \"{{recipe}}\"",
 	"tv.birthday": "{{icon}}{{...}}",
 	
-	"tv.weather.pelican_town": "Сегодня в Городе Пеликан {{...}}",
-	"tv.weather.ginger_island": "Сегодня на Имбирном Острове {{...}}",
+	"tv.weather.pelican_town": "Завтра в Городе Пеликан {{...}}",
+	"tv.weather.ginger_island": "Завтра на Имбирном Острове {{...}}",
 	
 	"config.weather": "Показывать погоду",
 	"config.weather.desc": "Когда показывать сообщения о погоде",
@@ -23,24 +23,24 @@
 	"config.weather.show.never": "Никогда",
 	
 	"config.birthdays": "Показывать дни рождения",
-	"config.birthdays.desc": "Когда показывать сообщения о днях рождения",
-	"config.birthdays.desc2": "Если отображаются дни рождения",
+	"config.birthdays.desc": "Показывать ли сообщения о днях рождения",
+	"config.birthdays.desc2": "Если есть дни рождения",
 	
 	"config.birthdays.use_names": "Использовать имена",
 	"config.birthdays.use_names.desc": "Показывать имена жителей вместо иконки их лица",
 	
 	"config.luck": "Показывать удачу",
-	"config.luck.desc": "Когда показывать сообщения об удаче",
+	"config.luck.desc": "Показывать ли сообщения об удаче",
 	
 	"config.luck.good": "Показывать удачу",
-	"config.luck.good.desc": "Если отображаются сообщения об удаче",
+	"config.luck.good.desc": "Отображать сообщения об удаче",
 	"config.luck.neutral": "Показывать нейтральную удачу",
-	"config.luck.neutral.desc": "Если отображаются сообщения об нейтральной удаче",
+	"config.luck.neutral.desc": "Отображать сообщения о нейтральной удаче",
 	"config.luck.bad": "Показывать плохую удачу",
-	"config.luck.bad.desc": "Если отображаются сообщения о плохой удаче",
+	"config.luck.bad.desc": "Отображать сообщения о плохой удаче",
 	
 	"config.recipes": "Показывать рецепты",
-	"config.recipes.desc": "Когда показывать сообщения о рецептах",
+	"config.recipes.desc": "Показывать ли сообщения о рецептах",
 	
 	"config.recipes.new": "Показывать новые рецепты",
 	"config.recipes.new.desc": "Показывать сообщения для неизвестных рецептов",
@@ -56,7 +56,7 @@
 	"config.multiplayer.config.desc": "Если приведенные здесь опции следует использовать и для других игроков. При отправке оповещений другим игрокам можно использовать параметры, отличные от ваших предпочтений. Выберите заголовок многопользовательской игры, чтобы настроить параметры",
 	
 	"config.icons.spirits": "Иконки духов",
-	"config.icons.spirits.desc": "Иконки используемые в сообщениях для духов",
+	"config.icons.spirits.desc": "Иконки используемые в сообщениях для отображения настроения духов",
 	
 	"config.icons.spirit": "Духи",
 	"config.icons.spirits.very_happy": "Очень счасливы",
@@ -73,7 +73,7 @@
 	"config.icons.recipes.learned": "Известный рецепт",
 	
 	"config.icons.birthdays": "Иконки дня рождения",
-	"config.icons.birthdays.desc": "Иконки, используемые для дней рождения",
+	"config.icons.birthdays.desc": "Иконки, используемые для отображения дней рождения",
 	
 	"config.icons.birthdays.today": "День рождения сегодня",
 	
