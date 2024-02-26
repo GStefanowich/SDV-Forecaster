@@ -23,6 +23,7 @@
  * SOFTWARE.
  */
 
+using System.Diagnostics.CodeAnalysis;
 using StardewModdingAPI;
 using StardewValley;
 
@@ -42,10 +43,12 @@ namespace ForecasterText.Objects.Messages {
                 content = this.Message.Write(farmer, t9N, config)
             });
         
-        public static MessageSource TV(ISourceMessage message)
+        [return: NotNullIfNotNull("message")]
+        public static MessageSource? TV(ISourceMessage? message)
             => message is null ? null : new MessageSource("tv", message);
         
-        public static MessageSource Calendar(ISourceMessage message)
+        [return: NotNullIfNotNull("message")]
+        public static MessageSource? Calendar(ISourceMessage? message)
             => message is null ? null : new MessageSource("calendar", message);
     }
 }

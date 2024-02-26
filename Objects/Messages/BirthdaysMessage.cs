@@ -38,7 +38,7 @@ namespace ForecasterText.Objects.Messages {
             // Get a list of todays birthdays
             MessageSource birthdays = ISourceMessage.GetBirthdays(farmer.friendshipData.FieldDict.Keys
                 .Select(name => Game1.getCharacterFromName(name, true))
-                .Where(npc => npc is not null && npc.isBirthday(Game1.currentSeason, Game1.dayOfMonth)), config);
+                .Where(npc => npc is not null && npc.isBirthday()), config);
             
             return birthdays is null ? null : birthdays.Write(farmer, t9N, config);
         }

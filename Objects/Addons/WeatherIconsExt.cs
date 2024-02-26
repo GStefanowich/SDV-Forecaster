@@ -23,10 +23,20 @@
  * SOFTWARE.
  */
 
-using System.Collections.Generic;
-using StardewValley.Menus;
+using System;
+using ForecasterText.Objects.Enums;
+using StardewValley;
 
-namespace ForecasterText.Objects {
-    internal delegate IEnumerable<ChatSnippet> ConfigMessageRenderer(ConfigEmojiMessage message);
-    internal delegate string? ConfigMessageParsingRenderer(ConfigEmojiMessage message);
+namespace ForecasterText.Objects.Addons {
+    public static class WeatherIconsExt {
+        public static string GetString(this WeatherIcons icon) => icon switch {
+            WeatherIcons.SUN => Game1.weather_sunny,
+            WeatherIcons.RAIN => Game1.weather_rain,
+            WeatherIcons.LIGHTNING => Game1.weather_lightning,
+            WeatherIcons.FESTIVAL => Game1.weather_festival,
+            WeatherIcons.SNOW => Game1.weather_snow,
+            WeatherIcons.WEDDING => Game1.weather_wedding,
+            _ => throw new ArgumentOutOfRangeException(nameof(icon), icon, null)
+        };
+    }
 }

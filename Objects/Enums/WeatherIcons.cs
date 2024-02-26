@@ -23,16 +23,14 @@
  * SOFTWARE.
  */
 
-using StardewValley;
-
-namespace ForecasterText {
+namespace ForecasterText.Objects.Enums {
     public enum WeatherIcons {
-        SUN = Game1.weather_sunny,
-        RAIN = Game1.weather_rain,
+        SUN,
+        RAIN,
         //DEBRIS = Game1.weather_debris,
-        LIGHTNING = Game1.weather_lightning,
-        FESTIVAL = Game1.weather_festival,
-        SNOW = Game1.weather_snow,
-        WEDDING = Game1.weather_wedding
+        LIGHTNING,
+        FESTIVAL,
+        SNOW,
+        WEDDING
     }
 }

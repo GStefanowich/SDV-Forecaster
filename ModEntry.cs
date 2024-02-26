@@ -64,7 +64,7 @@ namespace ForecasterText {
         /// <summary>
         /// Register with the Config Mod when the game is launched
         /// </summary>
-        private void OnGameLaunched(object sender, GameLaunchedEventArgs args) {
+        private void OnGameLaunched(object? sender, GameLaunchedEventArgs args) {
             if (this.Helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu") is IGenericModConfigMenuApi configMenu)
                 this.ConfigManager.RegisterConfigManager(configMenu);
         }
@@ -72,8 +72,8 @@ namespace ForecasterText {
         /// <summary>
         /// When a player joins the game, make sure they know the details of the day
         /// </summary>
-        private void OnPeerJoin(object sender, PeerConnectedEventArgs peerConnectedEventArgs) {
-            Farmer farmer = Game1.getOnlineFarmers()
+        private void OnPeerJoin(object? sender, PeerConnectedEventArgs peerConnectedEventArgs) {
+            Farmer? farmer = Game1.getOnlineFarmers()
                 .FirstOrDefault(farmer => farmer.UniqueMultiplayerID == peerConnectedEventArgs.Peer.PlayerID && !this.PlayerHasMod(farmer));
             if (farmer is not null)
                 this.Events.OnFarmerJoin(sender, farmer);
@@ -108,13 +108,13 @@ namespace ForecasterText {
             }
             
             /// <inheritdoc/>
-            public string GetAnyRecipe() => this.DayOfWeek switch {
+            public string? GetAnyRecipe() => this.DayOfWeek switch {
                 DayOfWeek.Sunday or DayOfWeek.Wednesday => this.GetRegularRecipes(),
                 DayOfWeek.Friday => this.GetAnimalHusbandryRecipes(),
                 _ => null
             };
             
-            private string GetRegularRecipes() {
+            private string? GetRegularRecipes() {
                 uint played = Game1.stats.DaysPlayed;
                 if (played < 5)
                     return null;
@@ -137,8 +137,8 @@ namespace ForecasterText {
                 }
                 
                 // Dictionary of recipes
-                Dictionary<string, string> dictionary = Game1.temporaryContent.Load<Dictionary<string, string>>("Data\\TV\\CookingChannel");
-                if (!dictionary.TryGetValue($"{num}", out string translation))
+                Dictionary<string, string> dictionary = DataLoader.Tv_CookingChannel(Game1.temporaryContent);
+                if (!dictionary.TryGetValue($"{num}", out string? translation))
                     return null;
                 
                 // Split the translation info
@@ -148,7 +148,7 @@ namespace ForecasterText {
                 return recipeInfo.Length <= 0 ? null : recipeInfo[0];
             }
             
-            private string GetAnimalHusbandryRecipes() {
+            private string? GetAnimalHusbandryRecipes() {
                 if (!this.Mod.PlayerHasMod(this.Farmer, "Digus.AnimalHusbandryMod"))
                     return null;
                 
@@ -168,7 +168,7 @@ namespace ForecasterText {
                 }
                 
                 // Try reading the recipe number from the dictionary
-                if (!recipes.TryGetValue(recipeNumber, out string recipe))
+                if (!recipes.TryGetValue(recipeNumber, out string? recipe))
                     return null;
                 
                 // Split the translation info
