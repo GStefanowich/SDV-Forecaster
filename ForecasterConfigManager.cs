@@ -266,6 +266,94 @@ namespace ForecasterText {
                 i => config.WeddingWeatherEmoji = i,
                 message => this.WeatherExampleMessage(message, WeatherIcons.WEDDING)?.Write(config, this.Translations)
             );
+
+            // Emojis for WeatherWonders weather
+            this.AddSectionTitle("icons.weather_wonders");
+
+            this.AddEmojiSelector("icons.weather.acid_rain",
+                () => config.AcidRainWeatherEmoji,
+                i => config.AcidRainWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.ACID_RAIN)?.Write(config, this.Translations)
+             );
+            this.AddEmojiSelector("icons.weather.blizzard",
+                () => config.BlizzardWeatherEmoji,
+                i => config.BlizzardWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.BLIZZARD)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.cloudy",
+                () => config.CloudyWeatherEmoji,
+                i => config.CloudyWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.CLOUDY)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.deluge",
+                () => config.DilugeWeatherEmoji,
+                i => config.DilugeWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.DILUGE)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.drizzle",
+                () => config.DrizzleWeatherEmoji,
+                i => config.DrizzleWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.DRIZZLE)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.dry_lightning",
+                () => config.DryLightningWeatherEmoji,
+                i => config.DryLightningWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.DRY_LIGHTNING)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.hailstorm",
+                () => config.HailstormWeatherEmoji,
+                i => config.HailstormWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.HAILSTORM)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.heatwave",
+                () => config.HeatwaveWeatherEmoji,
+                i => config.HeatwaveWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.HEATWAVE)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.mist",
+                () => config.MistWeatherEmoji,
+                i => config.MistWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.MIST)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.muddy_rain",
+                () => config.MuddyRainWeatherEmoji,
+                i => config.MuddyRainWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.MUDDY_RAIN)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.snow_rain_mix",
+                () => config.SnowRainMixWeatherEmoji,
+                i => config.SnowRainMixWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.SNOW_RAIN_MIX)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.sandstorm",
+                () => config.SandstormWeatherEmoji,
+                i => config.SandstormWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.SANDSTORM)?.Write(config, this.Translations)
+            );
+
+            // Emojis for WeatherWonders night events
+            this.AddSectionTitle("icons.weather_wonders_night");
+
+            this.AddEmojiSelector("icons.weather.moon",
+                () => config.MoonWeatherEmoji,
+                i => config.MoonWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.MOON)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.blood_moon",
+                () => config.BloodMoonWeatherEmoji,
+                i => config.BloodMoonWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.BLOOD_MOON)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.blue_moon",
+                () => config.BlueMoonWeatherEmoji,
+                i => config.BlueMoonWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.BLUE_MOON)?.Write(config, this.Translations)
+            );
+            this.AddEmojiSelector("icons.weather.harvest_moon",
+                () => config.HarvestMoonWeatherEmoji,
+                i => config.HarvestMoonWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.HARVEST_MOON)?.Write(config, this.Translations)
+            );
         }
         
         private void Register(Action reset, Action save)
@@ -281,7 +369,7 @@ namespace ForecasterText {
         
         private void AddBoolOption(Func<bool> getValue, Action<bool> setValue, string name) {
             IConfT9N t9N = this.Translation(name);
-            this.AddBoolOption(getValue, setValue, t9N.Get, t9N.GetDesc);
+            this.AddBoolOption(getValue, setValue, t9N.Get, t9N.GetDesc);   
         }
         private void AddBoolOption(Func<bool> getValue, Action<bool> setValue, string name, string tooltip) {
             IConfT9N t9N = this.Translation(name, tooltip);

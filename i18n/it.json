@@ -1,63 +1,63 @@
 {
 	"source.tv": "TV: {{content}}",
 	"source.calendar": "Calendario: {{content}}",
-	
+
 	"tv.spirits": "{{spirit}}è{{mood}}oggi",
 	"tv.recipe": "{{icon}}Impara a fare \"{{recipe}}\"",
 	"tv.birthday": "{{icon}}{{...}}",
-	
+
 	"tv.weather.pelican_town": "Previsioni di Pelican Town {{...}}",
 	"tv.weather.ginger_island": "Previsioni di Ginger Island {{...}}",
-	
+
 	"config.weather": "Mostra il meteo",
 	"config.weather.desc": "Quando mostrare i messaggi del meteo",
-	
+
 	"config.weather.pelican_town": "Pelican Town",
 	"config.weather.pelican_town.desc": "Quando mostrare il meteo di Pelican Town",
 	"config.weather.ginger_island": "Ginger Island",
 	"config.weather.ginger_island.desc": "Quando mostrare il meteo di Pelican Town",
-	
+
 	"config.weather.show.always": "Sempre",
 	"config.weather.show.raining": "Piove",
 	"config.weather.show.not_raining": "Non piove",
 	"config.weather.show.never": "Mai",
-	
+
 	"config.birthdays": "Mostra compleanni",
 	"config.birthdays.desc": "Quando mostrare messaggi dei compleanni",
 	"config.birthdays.desc2": "Se i compleanni sono mostrati",
-	
+
 	"config.birthdays.use_names": "Usa nomi",
 	"config.birthdays.use_names.desc": "Mostra i nomi dei cittadini invece dell'icona della loro faccia'",
-	
+
 	"config.luck": "Mostra fortuna",
 	"config.luck.desc": "Quando mostrare messaggi della fortuna",
-	
+
 	"config.luck.good": "Mostra fortuna buona",
 	"config.luck.good.desc": "Se i messaggi di fortuna buona sono visualizzati",
 	"config.luck.neutral": "Mostra fortuna neutrale",
 	"config.luck.neutral.desc": "Se i messaggi di fortuna neutrale sono visualizzati",
 	"config.luck.bad": "Mostra fortuna cattiva",
 	"config.luck.bad.desc": "Se i messaggi di fortuna cattiva sono visualizzati",
-	
+
 	"config.recipes": "Mostra ricette",
 	"config.recipes.desc": "Quando mostrare i messaggi delle ricette",
-	
+
 	"config.recipes.new": "Mostra nuove ricette",
 	"config.recipes.new.desc": "Mostra messaggi per ricette sconosciute",
 	"config.recipes.learned": "Mostra ricette imparate",
 	"config.recipes.learned.desc": "Mostra messaggi per ricette già imparate",
-	
+
 	"config.multiplayer": "Multigiocatore",
 	"config.multiplayer.desc": "Personalizza le opzioni della mod usate per gli altri giocatori",
-	
+
 	"config.multiplayer.share": "Condividi con altri giocatori",
 	"config.multiplayer.share.desc": "Manderà il messaggio di avviso ai giocatori che non hanno la mod in chat",
 	"config.multiplayer.config": "Usa le stesse opzioni",
 	"config.multiplayer.config.desc": "Se le opzioni qui dovrebbero essere usate anche per altri giocatori. Quando mandi avvisi per gli altri giocatori, diverse opzioni dalle tue possono essere usate. Seleziona il leader del Multigiocatore per personalizzare le opzioni",
-	
+
 	"config.icons.spirits": "Icone degli spiriti",
 	"config.icons.spirits.desc": "Le icone da usare nei messaggi per gli spiriti",
-	
+
 	"config.icons.spirit": "Spiriti",
 	"config.icons.spirits.very_happy": "Molto contenti",
 	"config.icons.spirits.good_humor": "Buon umore",
@@ -65,21 +65,21 @@
 	"config.icons.spirits.somewhat_annoyed": "Un po' infastiditi'",
 	"config.icons.spirits.mildly_perturbed": "Leggermente perturbati",
 	"config.icons.spirits.very_displeased": "Molto scontenti",
-	
+
 	"config.icons.recipes": "Icone delle ricette",
 	"config.icons.recipes.desc": "Le icone da usare nei messaggi per le ricette",
-	
+
 	"config.icons.recipes.new": "Ricetta nuova",
 	"config.icons.recipes.learned": "Ricetta imparata",
-	
+
 	"config.icons.birthdays": "Icone dei compleanni",
 	"config.icons.birthdays.desc": "Le icone da usare nei messaggi per i compleanni",
-	
+
 	"config.icons.birthdays.today": "Compleanno oggi",
-	
+
 	"config.icons.weather": "Icone del meteo",
 	"config.icons.weather.desc": "Le icone da usare nei messaggi per il meteo",
-	
+
 	"config.icons.weather.sunny": "Soleggiato",
 	"config.icons.weather.sunny.desc": "Mostra se domani sarà un giorno di sole",
 	"config.icons.weather.rain": "Piovoso",
@@ -91,5 +91,45 @@
 	"config.icons.weather.festival": "Festival",
 	"config.icons.weather.festival.desc": "Mostra con il meteo se c'è un festival il giorno dopo",
 	"config.icons.weather.wedding": "Matrimonio",
-	"config.icons.weather.wedding.desc": "Mostra con il meteo se c'è un matrimonio il giorno dopo"
+	"config.icons.weather.wedding.desc": "Mostra con il meteo se c'è un matrimonio il giorno dopo",
+
+	"config.icons.weather_wonders": "Icone meteo di Weather Wonders",
+	"config.icons.weather_wonders.desc": "Le icone da utilizzare nei messaggi per il meteo di Weather Wonders",
+
+	"config.icons.weather.acid_rain": "Pioggia Acida",
+	"config.icons.weather.acid_rain.desc": "Mostra se ci sarà pioggia acida il giorno seguente",
+	"config.icons.weather.blizzard": "Bufera di Neve",
+	"config.icons.weather.blizzard.desc": "Mostra se ci sarà una bufera di neve il giorno seguente",
+	"config.icons.weather.cloudy": "Nuvoloso",
+	"config.icons.weather.cloudy.desc": "Mostra se sarà nuvoloso il giorno seguente",
+	"config.icons.weather.deluge": "Diluvio",
+	"config.icons.weather.deluge.desc": "Mostra se ci sarà un diluvio il giorno seguente",
+	"config.icons.weather.drizzle": "Pioggerella",
+	"config.icons.weather.drizzle.desc": "Mostra se ci sarà pioggerella il giorno seguente",
+	"config.icons.weather.dry_lightning": "Fulmine Secco",
+	"config.icons.weather.dry_lightning.desc": "Mostra se ci saranno fulmini secchi il giorno seguente",
+	"config.icons.weather.hailstorm": "Grandinata",
+	"config.icons.weather.hailstorm.desc": "Mostra se ci sarà una grandinata il giorno seguente",
+	"config.icons.weather.heatwave": "Ondata di Calore",
+	"config.icons.weather.heatwave.desc": "Mostra se ci sarà un'ondata di calore il giorno seguente",
+	"config.icons.weather.mist": "Nebbia",
+	"config.icons.weather.mist.desc": "Mostra se ci sarà nebbia il giorno seguente",
+	"config.icons.weather.muddy_rain": "Pioggia di Fango",
+	"config.icons.weather.muddy_rain.desc": "Mostra se ci sarà pioggia di fango il giorno seguente",
+	"config.icons.weather.snow_rain_mix": "Neve e Pioggia Mista",
+	"config.icons.weather.snow_rain_mix.desc": "Mostra se ci sarà neve e pioggia mista il giorno seguente",
+	"config.icons.weather.sandstorm": "Tempesta di Sabbia",
+	"config.icons.weather.sandstorm.desc": "Mostra se ci sarà una tempesta di sabbia il giorno seguente",
+
+	"config.icons.weather_wonders_night": "Icone degli eventi notturni di Weather Wonders",
+	"config.icons.weather_wonders_night.desc": "Le icone da utilizzare nei messaggi per gli eventi notturni di Weather Wonders",
+
+	"config.icons.weather.moon": "Icona Eventi notturni",
+	"config.icons.weather.moon.desc": "Icona Eventi notturni",
+	"config.icons.weather.blood_moon": "Luna di Sangue",
+	"config.icons.weather.blood_moon.desc": "Mostra se ci sarà una luna di sangue il giorno seguente",
+	"config.icons.weather.blue_moon": "Luna Blu",
+	"config.icons.weather.blue_moon.desc": "Mostra se ci sarà una luna blu il giorno seguente",
+	"config.icons.weather.harvest_moon": "Luna del Raccolto",
+	"config.icons.weather.harvest_moon.desc": "Mostra se ci sarà una luna del raccolto il giorno seguente"
 }
