@@ -44,10 +44,27 @@ namespace ForecasterText {
         public uint SnowWeatherEmoji { get; set; } = 103u;
         public uint FestivalWeatherEmoji { get; set; } = 151u;
         public uint WeddingWeatherEmoji { get; set; } = 46u;
-        
+        // WeatherWonders Weathers
+        public uint AcidRainWeatherEmoji { get; set; } = 45u;
+        public uint BlizzardWeatherEmoji { get; set; } = 103u;
+        public uint CloudyWeatherEmoji { get; set; } = 105u;
+        public uint DilugeWeatherEmoji { get; set; } = 49u;
+        public uint DrizzleWeatherEmoji { get; set; } = 65u;
+        public uint DryLightningWeatherEmoji { get; set; } = 102u;
+        public uint HailstormWeatherEmoji { get; set; } = 44u;
+        public uint HeatwaveWeatherEmoji { get; set; } = 143u;
+        public uint MistWeatherEmoji { get; set; } = 104u;
+        public uint MuddyRainWeatherEmoji { get; set; } = 56u;
+        public uint SnowRainMixWeatherEmoji { get; set; } = 103u;
+        public uint SandstormWeatherEmoji { get; set; } = 148u;
+        // WeatherWonders Night Events
+        public uint MoonWeatherEmoji { get; set; } = 98u;
+        public uint BloodMoonWeatherEmoji { get; set; } = 34u;
+        public uint BlueMoonWeatherEmoji { get; set; } = 87u;
+        public uint HarvestMoonWeatherEmoji { get; set; } = 58u;
         #endregion
         #region Luck Emoji
-        
+
         public bool ShowGoodLuck { get; set; } = true;
         public bool ShowNeutralLuck { get; set; } = true;
         public bool ShowBadLuck { get; set; } = true;
@@ -93,6 +110,24 @@ namespace ForecasterText {
             WeatherIcons.FESTIVAL => this.FestivalWeatherEmoji,
             WeatherIcons.SNOW => this.SnowWeatherEmoji,
             WeatherIcons.WEDDING => this.WeddingWeatherEmoji,
+            // WeatherWonders Weathers
+            WeatherIcons.ACID_RAIN => this.AcidRainWeatherEmoji,
+            WeatherIcons.BLIZZARD => this.BlizzardWeatherEmoji,
+            WeatherIcons.CLOUDY => this.CloudyWeatherEmoji,
+            WeatherIcons.DILUGE => this.DilugeWeatherEmoji,
+            WeatherIcons.DRIZZLE => this.DrizzleWeatherEmoji,
+            WeatherIcons.DRY_LIGHTNING => this.DryLightningWeatherEmoji,
+            WeatherIcons.HAILSTORM => this.HailstormWeatherEmoji,
+            WeatherIcons.HEATWAVE => this.HeatwaveWeatherEmoji,
+            WeatherIcons.MIST => this.MistWeatherEmoji,
+            WeatherIcons.MUDDY_RAIN => this.MuddyRainWeatherEmoji,
+            WeatherIcons.SNOW_RAIN_MIX => this.SnowRainMixWeatherEmoji,
+            WeatherIcons.SANDSTORM => this.SandstormWeatherEmoji,
+            // WeatherWonders Night Events
+            WeatherIcons.MOON => this.MoonWeatherEmoji,
+            WeatherIcons.BLOOD_MOON => this.BloodMoonWeatherEmoji,
+            WeatherIcons.BLUE_MOON => this.BlueMoonWeatherEmoji,
+            WeatherIcons.HARVEST_MOON => this.HarvestMoonWeatherEmoji,
             _ => 0u
         };
         public uint? GetEmoji(SpiritMoods icon) => icon switch {

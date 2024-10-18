@@ -31,6 +31,24 @@ namespace ForecasterText.Objects.Enums {
         LIGHTNING,
         FESTIVAL,
         SNOW,
-        WEDDING
+        WEDDING,
+        // WeatherWonders Weathers
+        ACID_RAIN,
+        BLIZZARD,
+        CLOUDY,
+        DILUGE,
+        DRIZZLE,
+        DRY_LIGHTNING,
+        HAILSTORM,
+        HEATWAVE,
+        MIST,
+        MUDDY_RAIN,
+        SNOW_RAIN_MIX,
+        SANDSTORM,
+        // WeatherWonders Night Events
+        MOON,
+        BLOOD_MOON,
+        BLUE_MOON,
+        HARVEST_MOON
     }
 }

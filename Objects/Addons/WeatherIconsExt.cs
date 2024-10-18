@@ -26,6 +26,7 @@
 using System;
 using ForecasterText.Objects.Enums;
 using StardewValley;
+using ForecasterText.Constants;
 
 namespace ForecasterText.Objects.Addons {
     public static class WeatherIconsExt {
@@ -36,6 +37,24 @@ namespace ForecasterText.Objects.Addons {
             WeatherIcons.FESTIVAL => Game1.weather_festival,
             WeatherIcons.SNOW => Game1.weather_snow,
             WeatherIcons.WEDDING => Game1.weather_wedding,
+            // WeatherWonders Weathers
+            WeatherIcons.ACID_RAIN => WeatherWondersIds.acid_rain,
+            WeatherIcons.BLIZZARD => WeatherWondersIds.blizzard,
+            WeatherIcons.CLOUDY => WeatherWondersIds.cloudy,
+            WeatherIcons.DILUGE => WeatherWondersIds.deluge,
+            WeatherIcons.DRIZZLE => WeatherWondersIds.drizzle,
+            WeatherIcons.DRY_LIGHTNING => WeatherWondersIds.dry_lightning,
+            WeatherIcons.HAILSTORM => WeatherWondersIds.hailstorm,
+            WeatherIcons.HEATWAVE => WeatherWondersIds.heatwave ,
+            WeatherIcons.MIST => WeatherWondersIds.mist,
+            WeatherIcons.MUDDY_RAIN => WeatherWondersIds.muddy_rain,
+            WeatherIcons.SNOW_RAIN_MIX => WeatherWondersIds.snow_rain_mix,
+            WeatherIcons.SANDSTORM => WeatherWondersIds.sandstorm,
+            // WeatherWonders Night Events
+            WeatherIcons.MOON => WeatherWondersIds.moon,
+            WeatherIcons.BLOOD_MOON => WeatherWondersIds.blood_moon,
+            WeatherIcons.BLUE_MOON => WeatherWondersIds.blue_moon,
+            WeatherIcons.HARVEST_MOON => WeatherWondersIds.harvest_moon,
             _ => throw new ArgumentOutOfRangeException(nameof(icon), icon, null)
         };
     }

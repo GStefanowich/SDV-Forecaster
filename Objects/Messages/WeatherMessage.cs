@@ -25,6 +25,7 @@
 
 using ForecasterText.Objects.Addons;
 using ForecasterText.Objects.Enums;
+using ForecasterText.Constants;
 using StardewModdingAPI;
 using StardewValley;
 
@@ -66,6 +67,37 @@ namespace ForecasterText.Objects.Messages {
                     => new[] { WeatherIcons.LIGHTNING, WeatherIcons.RAIN },
                 Game1.weather_snow
                     => new[] { WeatherIcons.SNOW },
+                // WeatherWonders Weathers
+                WeatherWondersIds.acid_rain
+                    => new[] { WeatherIcons.RAIN, WeatherIcons.ACID_RAIN },
+                WeatherWondersIds.blizzard
+                    => new[] { WeatherIcons.SNOW, WeatherIcons.BLIZZARD },
+                WeatherWondersIds.cloudy
+                    => new[] { WeatherIcons.CLOUDY },
+                WeatherWondersIds.deluge
+                    => new[] { WeatherIcons.RAIN, WeatherIcons.DILUGE },
+                WeatherWondersIds.drizzle
+                    => new[] { WeatherIcons.DRIZZLE },
+                WeatherWondersIds.dry_lightning
+                    => new[] { WeatherIcons.DRY_LIGHTNING },
+                WeatherWondersIds.hailstorm
+                    => new[] { WeatherIcons.SNOW, WeatherIcons.HAILSTORM },
+                WeatherWondersIds.heatwave
+                    => new[] { WeatherIcons.HEATWAVE },
+                WeatherWondersIds.mist
+                    => new[] { WeatherIcons.MIST },
+                WeatherWondersIds.muddy_rain
+                    => new[] { WeatherIcons.RAIN, WeatherIcons.MUDDY_RAIN },
+                WeatherWondersIds.snow_rain_mix
+                    => new[] { WeatherIcons.RAIN, WeatherIcons.SNOW_RAIN_MIX },
+                WeatherWondersIds.sandstorm
+                    => new[] { WeatherIcons.HEATWAVE, WeatherIcons.SANDSTORM },
+                WeatherWondersIds.blood_moon
+                    => new[] { WeatherIcons.MOON, WeatherIcons.BLOOD_MOON },
+                WeatherWondersIds.blue_moon
+                    => new[] { WeatherIcons.MOON, WeatherIcons.BLUE_MOON },
+                WeatherWondersIds.harvest_moon
+                    => new[] { WeatherIcons.MOON, WeatherIcons.HARVEST_MOON },
                 _ => null
             };
             
@@ -93,6 +125,23 @@ namespace ForecasterText.Objects.Messages {
                     Game1.weather_debris => display is WeatherDisplay.NOT_RAINING,
                     Game1.weather_lightning => display is WeatherDisplay.RAINING,
                     Game1.weather_snow => display is WeatherDisplay.NOT_RAINING,
+                    // WeatherWonders Weathers
+                    WeatherWondersIds.acid_rain => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.blizzard => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.cloudy => display is WeatherDisplay.NOT_RAINING,
+                    WeatherWondersIds.deluge => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.drizzle => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.dry_lightning => display is WeatherDisplay.NOT_RAINING,
+                    WeatherWondersIds.hailstorm => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.heatwave => display is WeatherDisplay.NOT_RAINING,
+                    WeatherWondersIds.mist => display is WeatherDisplay.NOT_RAINING,
+                    WeatherWondersIds.muddy_rain => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.snow_rain_mix => display is WeatherDisplay.RAINING,
+                    WeatherWondersIds.sandstorm => display is WeatherDisplay.RAINING,
+                    // WeatherWonders Night Events
+                    WeatherWondersIds.blood_moon => display is WeatherDisplay.NOT_RAINING,
+                    WeatherWondersIds.blue_moon => display is WeatherDisplay.NOT_RAINING,
+                    WeatherWondersIds.harvest_moon => display is WeatherDisplay.NOT_RAINING,
                     _ => false
                 }
             };
