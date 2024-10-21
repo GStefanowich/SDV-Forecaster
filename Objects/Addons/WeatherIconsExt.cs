@@ -33,6 +33,7 @@ namespace ForecasterText.Objects.Addons {
         public static string GetString(this WeatherIcons icon) => icon switch {
             WeatherIcons.SUN => Game1.weather_sunny,
             WeatherIcons.RAIN => Game1.weather_rain,
+            WeatherIcons.GREEN_RAIN => Game1.weather_green_rain,
             WeatherIcons.LIGHTNING => Game1.weather_lightning,
             WeatherIcons.FESTIVAL => Game1.weather_festival,
             WeatherIcons.SNOW => Game1.weather_snow,

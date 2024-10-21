@@ -84,6 +84,8 @@
 	"config.icons.weather.sunny.desc": "Показывает, будет ли солнечно на следующий день.",
 	"config.icons.weather.rain": "Дождь",
 	"config.icons.weather.rain.desc": "Показывает, будет ли дождь на следующий день",
+	"config.icons.weather.green_rain": "Green Rain",
+	"config.icons.weather.green_rain.desc": "Display if there is anomalous rain the next day",
 	"config.icons.weather.thunder": "Гроза",
 	"config.icons.weather.thunder.desc": "Показывает, будет ли гроза на следующий день",
 	"config.icons.weather.snow": "Снег",

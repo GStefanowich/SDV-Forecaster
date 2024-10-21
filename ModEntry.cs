@@ -47,6 +47,8 @@ namespace ForecasterText {
                 this,
                 this.ConfigManager
             );
+            
+            Console.WriteLine("Testing");
         }
         
         /// <summary>

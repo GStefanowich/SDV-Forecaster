@@ -84,6 +84,8 @@
 	"config.icons.weather.sunny.desc": "Mostra se domani sarà un giorno di sole",
 	"config.icons.weather.rain": "Piovoso",
 	"config.icons.weather.rain.desc": "Mostra se domani sarà un giorno di pioggia",
+	"config.icons.weather.green_rain": "Green Rain",
+	"config.icons.weather.green_rain.desc": "Display if there is anomalous rain the next day",
 	"config.icons.weather.thunder": "Fragoroso (Tuoni)",
 	"config.icons.weather.thunder.desc": "Mostra se domani ci saranno tuoni",
 	"config.icons.weather.snow": "Nevoso",

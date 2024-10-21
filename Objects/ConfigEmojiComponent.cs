@@ -23,6 +23,8 @@
  * SOFTWARE.
  */
 
+using ForecasterText.Objects.Addons;
+using ForecasterText.Objects.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -31,7 +33,7 @@ using StardewValley.Menus;
 
 namespace ForecasterText.Objects {
     public abstract class ConfigEmojiComponent {
-        public abstract uint Value { get; set; }
+        public abstract EmojiSet Value { get; set; }
         
         public int Width {
             get => this.Bounds.X;
@@ -45,15 +47,25 @@ namespace ForecasterText.Objects {
         public Vector2I Bounds;
         
         protected bool LeftDown { get; private set; }
+        protected bool RightDown { get; private set; }
         
         public virtual void OnDraw(SpriteBatch b, Vector2 vec2F)
             => this.OnDraw(b, (Vector2I)vec2F);
         
         public virtual void OnDraw(SpriteBatch b, Vector2I vector) {
-            bool leftDown = Mouse.GetState() is { LeftButton: ButtonState.Pressed };
+            MouseState state = Mouse.GetState();
+            
+            bool leftDown = state.LeftButton is ButtonState.Pressed;
+            bool rightDown = state.RightButton is ButtonState.Pressed;
+            
+            MouseButton? button = this.LeftDown && !leftDown
+                ? MouseButton.LEFT
+                : this.RightDown && !rightDown
+                ? MouseButton.RIGHT
+                : null;
             
             // If the previous state is DOWN and new state is NOT DOWN
-            if (this.LeftDown && !leftDown) {
+            if (button is not null) {
                 Vector2I mouse = new() {
                     X = Game1.getMouseX(),
                     Y = Game1.getMouseY()
@@ -61,17 +73,18 @@ namespace ForecasterText.Objects {
                 Vector2I bounds = vector + this.Bounds;
                 
                 if (bounds.Less(mouse) && vector.More(mouse))
-                    this.OnClick(vector, mouse);
+                    this.OnClick(button.Value, vector, mouse);
                 else
-                    this.OnOutsideClick(mouse);
+                    this.OnOutsideClick(button.Value, mouse);
             }
             
             this.LeftDown = leftDown;
+            this.RightDown = rightDown;
         }
         
-        protected virtual void OnClick(Vector2I bounds, Vector2I mouse) {}
+        protected virtual void OnClick(MouseButton button, Vector2I bounds, Vector2I mouse) {}
         
-        protected virtual void OnOutsideClick(Vector2I mouse) {}
+        protected virtual void OnOutsideClick(MouseButton button, Vector2I mouse) {}
         
         /// <summary>
         /// Draw a generic box using <see cref="DialogueBox"/>

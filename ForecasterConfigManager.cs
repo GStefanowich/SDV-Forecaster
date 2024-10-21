@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using ForecasterText.Objects;
+using ForecasterText.Objects.Addons;
 using ForecasterText.Objects.Enums;
 using ForecasterText.Objects.Messages;
 using GenericModConfigMenu;
@@ -63,7 +64,10 @@ namespace ForecasterText {
             
             // Register our config callbacks
             this.Register(
-                reset: () => this.ModConfig = new ForecasterConfig(),
+                reset: () => {
+                    this.ModConfig = new ForecasterConfig();
+                    this.ReRender();
+                },
                 save: () => this.Mod.Helper.WriteConfig(this.ModConfig)
             );
             
@@ -246,6 +250,11 @@ namespace ForecasterText {
                 i => config.RainWeatherEmoji = i,
                 message => this.WeatherExampleMessage(message, WeatherIcons.RAIN)?.Write(config, this.Translations)
             );
+            this.AddEmojiSelector("icons.weather.green_rain",
+                () => config.RainGreenWeatherEmoji,
+                i => config.RainGreenWeatherEmoji = i,
+                message => this.WeatherExampleMessage(message, WeatherIcons.GREEN_RAIN)?.Write(config, this.Translations)
+            );
             this.AddEmojiSelector("icons.weather.thunder",
                 () => config.ThunderWeatherEmoji,
                 i => config.ThunderWeatherEmoji = i,
@@ -266,10 +275,11 @@ namespace ForecasterText {
                 i => config.WeddingWeatherEmoji = i,
                 message => this.WeatherExampleMessage(message, WeatherIcons.WEDDING)?.Write(config, this.Translations)
             );
+            
             if (this.Mod.Helper.ModRegistry.IsLoaded("Kana.WeatherWonders")) {
                 // Emojis for WeatherWonders weather
                 this.AddSectionTitle("icons.weather_wonders");
-
+                
                 this.AddEmojiSelector("icons.weather.acid_rain",
                     () => config.AcidRainWeatherEmoji,
                     i => config.AcidRainWeatherEmoji = i,
@@ -330,10 +340,10 @@ namespace ForecasterText {
                     i => config.SandstormWeatherEmoji = i,
                     message => this.WeatherExampleMessage(message, WeatherIcons.SANDSTORM)?.Write(config, this.Translations)
                 );
-
+                
                 // Emojis for WeatherWonders night events
                 this.AddSectionTitle("icons.weather_wonders_night");
-
+                
                 this.AddEmojiSelector("icons.weather.moon",
                     () => config.MoonWeatherEmoji,
                     i => config.MoonWeatherEmoji = i,
@@ -355,9 +365,8 @@ namespace ForecasterText {
                     message => this.WeatherExampleMessage(message, WeatherIcons.HARVEST_MOON)?.Write(config, this.Translations)
                 );
             }
-
         }
-
+        
         private void Register(Action reset, Action save)
             => this.ConfigMenu?.Register(this.Manifest, reset, save);
         
@@ -395,10 +404,10 @@ namespace ForecasterText {
             formatAllowedValue: value => this.Translations.Get($"config.weather.show.{value.ToLowerInvariant()}")
         );
         
-        private void AddEmojiSelector(string? text, Func<uint> get, Action<uint>? set = null, ConfigMessageParsingRenderer? parser = null)
+        private void AddEmojiSelector(string? text, Func<EmojiSet> get, Action<EmojiSet>? set = null, ConfigMessageParsingRenderer? parser = null)
             => this.AddEmojiSelector(text, text is null ? null : $"{text}.desc", get, set, parser);
         
-        private void AddEmojiSelector(string? text, string? tooltip, Func<uint> get, Action<uint>? set = null, ConfigMessageParsingRenderer? parser = null) {
+        private void AddEmojiSelector(string? text, string? tooltip, Func<EmojiSet> get, Action<EmojiSet>? set = null, ConfigMessageParsingRenderer? parser = null) {
             // Unlike other types check if the config exists before constructing types
             if (this.ConfigMenu is {} config) {
                 ConfigEmojiMenu menu = new(this.Mod, this.Translation(text, tooltip), get, i => {

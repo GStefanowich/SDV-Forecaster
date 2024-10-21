@@ -50,64 +50,41 @@ namespace ForecasterText.Objects.Messages {
             if (!this.ShowWeather(display, weather))
                 return null;
             
-            WeatherIcons[]? emojis = weather switch {
-                Game1.weather_sunny
-                    => new[] { WeatherIcons.SUN },
-                Game1.weather_festival
-                    => new[] { WeatherIcons.SUN, WeatherIcons.FESTIVAL },
-                Game1.weather_wedding
-                    => new[] { WeatherIcons.SUN, WeatherIcons.WEDDING },
-                Game1.weather_rain
-                    => new[] { WeatherIcons.RAIN },
-                Game1.weather_debris when Game1.currentSeason.Equals("winter")
-                    => new[] { WeatherIcons.SNOW },
-                Game1.weather_debris
-                    => new[] { WeatherIcons.SUN },
-                Game1.weather_lightning
-                    => new[] { WeatherIcons.LIGHTNING, WeatherIcons.RAIN },
-                Game1.weather_snow
-                    => new[] { WeatherIcons.SNOW },
+            WeatherIcons? emoji = weather switch {
+                Game1.weather_sunny => WeatherIcons.SUN,
+                Game1.weather_festival => WeatherIcons.FESTIVAL,
+                Game1.weather_wedding => WeatherIcons.WEDDING,
+                Game1.weather_rain => WeatherIcons.RAIN,
+                Game1.weather_green_rain => WeatherIcons.GREEN_RAIN,
+                Game1.weather_debris when Game1.currentSeason.Equals("winter") => WeatherIcons.SNOW,
+                Game1.weather_debris => WeatherIcons.SUN,
+                Game1.weather_lightning => WeatherIcons.LIGHTNING,
+                Game1.weather_snow => WeatherIcons.SNOW,
                 // WeatherWonders Weathers
-                WeatherWondersIds.acid_rain
-                    => new[] { WeatherIcons.RAIN, WeatherIcons.ACID_RAIN },
-                WeatherWondersIds.blizzard
-                    => new[] { WeatherIcons.SNOW, WeatherIcons.BLIZZARD },
-                WeatherWondersIds.cloudy
-                    => new[] { WeatherIcons.CLOUDY },
-                WeatherWondersIds.deluge
-                    => new[] { WeatherIcons.RAIN, WeatherIcons.DILUGE },
-                WeatherWondersIds.drizzle
-                    => new[] { WeatherIcons.DRIZZLE },
-                WeatherWondersIds.dry_lightning
-                    => new[] { WeatherIcons.DRY_LIGHTNING },
-                WeatherWondersIds.hailstorm
-                    => new[] { WeatherIcons.SNOW, WeatherIcons.HAILSTORM },
-                WeatherWondersIds.heatwave
-                    => new[] { WeatherIcons.HEATWAVE },
-                WeatherWondersIds.mist
-                    => new[] { WeatherIcons.MIST },
-                WeatherWondersIds.muddy_rain
-                    => new[] { WeatherIcons.RAIN, WeatherIcons.MUDDY_RAIN },
-                WeatherWondersIds.snow_rain_mix
-                    => new[] { WeatherIcons.RAIN, WeatherIcons.SNOW_RAIN_MIX },
-                WeatherWondersIds.sandstorm
-                    => new[] { WeatherIcons.HEATWAVE, WeatherIcons.SANDSTORM },
-                WeatherWondersIds.blood_moon
-                    => new[] { WeatherIcons.MOON, WeatherIcons.BLOOD_MOON },
-                WeatherWondersIds.blue_moon
-                    => new[] { WeatherIcons.MOON, WeatherIcons.BLUE_MOON },
-                WeatherWondersIds.harvest_moon
-                    => new[] { WeatherIcons.MOON, WeatherIcons.HARVEST_MOON },
+                WeatherWondersIds.acid_rain => WeatherIcons.ACID_RAIN,
+                WeatherWondersIds.blizzard => WeatherIcons.BLIZZARD,
+                WeatherWondersIds.cloudy => WeatherIcons.CLOUDY,
+                WeatherWondersIds.deluge => WeatherIcons.DILUGE,
+                WeatherWondersIds.drizzle => WeatherIcons.DRIZZLE,
+                WeatherWondersIds.dry_lightning => WeatherIcons.DRY_LIGHTNING,
+                WeatherWondersIds.hailstorm => WeatherIcons.HAILSTORM,
+                WeatherWondersIds.heatwave => WeatherIcons.HEATWAVE,
+                WeatherWondersIds.mist => WeatherIcons.MIST,
+                WeatherWondersIds.muddy_rain => WeatherIcons.MUDDY_RAIN,
+                WeatherWondersIds.snow_rain_mix => WeatherIcons.SNOW_RAIN_MIX,
+                WeatherWondersIds.sandstorm => WeatherIcons.SANDSTORM,
+                WeatherWondersIds.blood_moon => WeatherIcons.BLOOD_MOON,
+                WeatherWondersIds.blue_moon => WeatherIcons.BLUE_MOON,
+                WeatherWondersIds.harvest_moon => WeatherIcons.HARVEST_MOON,
                 _ => null
             };
             
             // If no icons, or no results
-            if (emojis is not {Length: >0})
+            if (emoji is null)
                 return null;
             
-            MessageBuilder builder = new(this.T9N);
-            foreach (WeatherIcons emoji in emojis)
-                builder.AddEmoji("...", emoji);
+            MessageBuilder builder = new MessageBuilder(this.T9N)
+                .AddEmoji("...", emoji.Value);
             
             return MessageSource.TV(builder)
                 .Write(farmer, t9N, config);
@@ -125,6 +102,7 @@ namespace ForecasterText.Objects.Messages {
                     Game1.weather_debris => display is WeatherDisplay.NOT_RAINING,
                     Game1.weather_lightning => display is WeatherDisplay.RAINING,
                     Game1.weather_snow => display is WeatherDisplay.NOT_RAINING,
+                    Game1.weather_green_rain => display is WeatherDisplay.RAINING,
                     // WeatherWonders Weathers
                     WeatherWondersIds.acid_rain => display is WeatherDisplay.RAINING,
                     WeatherWondersIds.blizzard => display is WeatherDisplay.RAINING,

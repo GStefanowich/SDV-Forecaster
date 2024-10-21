@@ -27,6 +27,7 @@ namespace ForecasterText.Objects.Enums {
     public enum WeatherIcons {
         SUN,
         RAIN,
+        GREEN_RAIN,
         //DEBRIS = Game1.weather_debris,
         LIGHTNING,
         FESTIVAL,

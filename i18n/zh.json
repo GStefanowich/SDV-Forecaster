@@ -84,6 +84,8 @@
 	"config.icons.weather.sunny.desc": "第二天为晴天时显示",
 	"config.icons.weather.rain": "雨天",
 	"config.icons.weather.rain.desc": "第二天为雨天时显示",
+	"config.icons.weather.green_rain": "Green Rain",
+	"config.icons.weather.green_rain.desc": "Display if there is anomalous rain the next day",
 	"config.icons.weather.thunder": "雷雨天",
 	"config.icons.weather.thunder.desc": "第二天为雷雨天时显示",
 	"config.icons.weather.snow": "下雪",

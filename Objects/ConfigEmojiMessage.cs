@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ForecasterText.Objects.Addons;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -47,15 +48,15 @@ namespace ForecasterText.Objects {
         
         private bool _Dirty;
         public bool Dirty {
-            get => this._Dirty || this.Value != this.CachedValue;
+            get => this._Dirty || this.CachedValue is not EmojiSet cached || !this.Value.AreEquals(cached);
             set => this._Dirty = value;
         }
         
-        public override uint Value {
+        public override EmojiSet Value {
             get => this.Parent.Value;
             set => this.Parent.Value = value;
         }
-        public uint CachedValue;
+        public EmojiSet? CachedValue;
         
         public ConfigEmojiMessage(
             Mod mod,

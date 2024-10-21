@@ -101,15 +101,21 @@ namespace ForecasterText.Objects.Messages {
                 
                 foreach (object raw in pair.Value) {
                     object? cast = raw switch {
-                        SpiritMoods mood => config.GetEmoji(mood),
-                        WeatherIcons weather => config.GetEmoji(weather),
-                        MiscEmoji emoji => config.GetEmoji(emoji),
+                        SpiritMoods mood => config.GetEmojis(mood),
+                        WeatherIcons weather => config.GetEmojis(weather),
+                        MiscEmoji emoji => config.GetEmojis(emoji),
                         _ => raw
                     };
                     
                     if (cast is null)
                         continue;
-                    intern.Append(cast is uint i ? $"[{i}]" : cast);
+                    
+                    intern.Append(cast switch {
+                        EmojiSet set => string.Join("", set.Select(i => $"[{i}]")),
+                        uint id => $"[{id}]",
+                        _ => cast
+                    });
+                    //intern.Append(cast is uint i ? $"[{i}]" : cast);
                 }
                 
                 return intern.ToString();

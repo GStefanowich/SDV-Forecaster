@@ -1,5 +1,4 @@
-﻿namespace ForecasterText.Constants
-{
+﻿namespace ForecasterText.Constants {
     public static class WeatherWondersIds {
         public const string acid_rain = "Kana.WeatherWonders_AcidRain";
         public const string blizzard = "Kana.WeatherWonders_Blizzard";

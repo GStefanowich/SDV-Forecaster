@@ -23,6 +23,8 @@
  * SOFTWARE.
  */
 
+using ForecasterText.Constants;
+using ForecasterText.Objects.Addons;
 using ForecasterText.Objects.Enums;
 
 namespace ForecasterText {
@@ -38,60 +40,64 @@ namespace ForecasterText {
         /// <summary>When to show the weather for Ginger Island</summary>
         public WeatherDisplay GingerIslandWeather { get; set; } = WeatherDisplay.ALWAYS;
         
-        public uint SunWeatherEmoji { get; set; } = 99u;
-        public uint RainWeatherEmoji { get; set; } = 100u;
-        public uint ThunderWeatherEmoji { get; set; } = 102u;
-        public uint SnowWeatherEmoji { get; set; } = 103u;
-        public uint FestivalWeatherEmoji { get; set; } = 151u;
-        public uint WeddingWeatherEmoji { get; set; } = 46u;
+        public EmojiSet SunWeatherEmoji { get; set; } = Emoji.SUN;
+        public EmojiSet RainWeatherEmoji { get; set; } = Emoji.RAINDROPS;
+        public EmojiSet RainGreenWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.CLOVER };
+        public EmojiSet ThunderWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.LIGHTNING };
+        public EmojiSet SnowWeatherEmoji { get; set; } = Emoji.SNOWFLAKE;
+        public EmojiSet FestivalWeatherEmoji { get; set; } = new[] { Emoji.SUN, Emoji.BELL };
+        public EmojiSet WeddingWeatherEmoji { get; set; } = new[] { Emoji.SUN, Emoji.SMALL_HEART };
+        
         // WeatherWonders Weathers
-        public uint AcidRainWeatherEmoji { get; set; } = 45u;
-        public uint BlizzardWeatherEmoji { get; set; } = 103u;
-        public uint CloudyWeatherEmoji { get; set; } = 105u;
-        public uint DilugeWeatherEmoji { get; set; } = 49u;
-        public uint DrizzleWeatherEmoji { get; set; } = 65u;
-        public uint DryLightningWeatherEmoji { get; set; } = 102u;
-        public uint HailstormWeatherEmoji { get; set; } = 44u;
-        public uint HeatwaveWeatherEmoji { get; set; } = 143u;
-        public uint MistWeatherEmoji { get; set; } = 104u;
-        public uint MuddyRainWeatherEmoji { get; set; } = 56u;
-        public uint SnowRainMixWeatherEmoji { get; set; } = 103u;
-        public uint SandstormWeatherEmoji { get; set; } = 148u;
+        public EmojiSet AcidRainWeatherEmoji { get; set; } = Emoji.BROKEN_HEART;
+        public EmojiSet BlizzardWeatherEmoji { get; set; } = new[] { Emoji.SNOWFLAKE, Emoji.SNOWFLAKE, Emoji.SNOWFLAKE };
+        public EmojiSet CloudyWeatherEmoji { get; set; } = Emoji.BUTTERFLY;
+        public EmojiSet DilugeWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.SWIRL };
+        public EmojiSet DrizzleWeatherEmoji { get; set; } = Emoji.WATER_DROPLET;
+        public EmojiSet DryLightningWeatherEmoji { get; set; } = Emoji.LIGHTNING;
+        public EmojiSet HailstormWeatherEmoji { get; set; } = new[] { Emoji.SNOWFLAKE, Emoji.BREAKING_HEART };
+        public EmojiSet HeatwaveWeatherEmoji { get; set; } = Emoji.FLAME;
+        public EmojiSet MistWeatherEmoji { get; set; } = Emoji.BUBBLE;
+        public EmojiSet MuddyRainWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.u56 };
+        public EmojiSet SnowRainMixWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.SNOWFLAKE };
+        public EmojiSet SandstormWeatherEmoji { get; set; } = new[] { Emoji.FLAME, Emoji.CACTUS };
+        
         // WeatherWonders Night Events
-        public uint MoonWeatherEmoji { get; set; } = 98u;
-        public uint BloodMoonWeatherEmoji { get; set; } = 34u;
-        public uint BlueMoonWeatherEmoji { get; set; } = 87u;
-        public uint HarvestMoonWeatherEmoji { get; set; } = 58u;
+        public EmojiSet MoonWeatherEmoji { get; set; } = Emoji.MOON;
+        public EmojiSet BloodMoonWeatherEmoji { get; set; } = new[] { Emoji.MOON, Emoji.PINK_SKULL };
+        public EmojiSet BlueMoonWeatherEmoji { get; set; } = new[] { Emoji.MOON, Emoji.STARDROP };
+        public EmojiSet HarvestMoonWeatherEmoji { get; set; } = new[] { Emoji.MOON, Emoji.TURNIP };
+        
         #endregion
         #region Luck Emoji
-
+        
         public bool ShowGoodLuck { get; set; } = true;
         public bool ShowNeutralLuck { get; set; } = true;
         public bool ShowBadLuck { get; set; } = true;
         
-        public uint SpiritsEmoji { get; set; } = 119u;
-        public uint VeryHappySpiritEmoji { get; set; } = 43u;
-        public uint GoodHumorSpiritEmoji { get; set; } = 2u;
-        public uint NeutralSpiritEmoji { get; set; } = 16u;
-        public uint SomewhatAnnoyedSpiritEmoji { get; set; } = 18u;
-        public uint MildlyPerturbedSpiritEmoji { get; set; } = 11u;
-        public uint VeryDispleasedSpiritEmoji { get; set; } = 14u;
+        public EmojiSet SpiritsEmoji { get; set; } = Emoji.GHOST;
+        public EmojiSet VeryHappySpiritEmoji { get; set; } = Emoji.HEART;
+        public EmojiSet GoodHumorSpiritEmoji { get; set; } = Emoji.u2;
+        public EmojiSet NeutralSpiritEmoji { get; set; } = Emoji.u16;
+        public EmojiSet SomewhatAnnoyedSpiritEmoji { get; set; } = Emoji.u18;
+        public EmojiSet MildlyPerturbedSpiritEmoji { get; set; } = Emoji.u11;
+        public EmojiSet VeryDispleasedSpiritEmoji { get; set; } = Emoji.u14;
         
         #endregion
         #region Recipe Emoji
         
         public bool ShowNewRecipes { get; set; } = true;
-        public uint NewRecipeEmoji { get; set; } = 132u;
+        public EmojiSet NewRecipeEmoji { get; set; } = Emoji.EXCLAMATION;
         
         public bool ShowExistingRecipes { get; set; } = false;
-        public uint KnownRecipeEmoji { get; set; } = 135u;
+        public EmojiSet KnownRecipeEmoji { get; set; } = Emoji.PAPER;
         
         #endregion
         #region Birthdays
         
         public bool ShowBirthdays { get; set; } = false;
         public bool UseVillagerNames { get; set; } = false;
-        public uint BirthdayEmoji { get; set; } = 152u;
+        public EmojiSet BirthdayEmoji { get; set; } = Emoji.PRESENT;
         
         #endregion
         #region Multiplayer
@@ -101,15 +107,22 @@ namespace ForecasterText {
         public ForecasterConfig? Child { get; set; } = null;
         
         #endregion
+        #region Other Reminders
+        
+        public bool TravelingMerchantReminder { get; set; }
+        
+        #endregion
         #region Getters
         
-        public uint? GetEmoji(WeatherIcons icon) => icon switch {
+        public EmojiSet? GetEmojis(WeatherIcons icon) => icon switch {
             WeatherIcons.SUN => this.SunWeatherEmoji,
             WeatherIcons.RAIN => this.RainWeatherEmoji,
+            WeatherIcons.GREEN_RAIN => this.RainGreenWeatherEmoji,
             WeatherIcons.LIGHTNING => this.ThunderWeatherEmoji,
             WeatherIcons.FESTIVAL => this.FestivalWeatherEmoji,
             WeatherIcons.SNOW => this.SnowWeatherEmoji,
             WeatherIcons.WEDDING => this.WeddingWeatherEmoji,
+            
             // WeatherWonders Weathers
             WeatherIcons.ACID_RAIN => this.AcidRainWeatherEmoji,
             WeatherIcons.BLIZZARD => this.BlizzardWeatherEmoji,
@@ -123,28 +136,29 @@ namespace ForecasterText {
             WeatherIcons.MUDDY_RAIN => this.MuddyRainWeatherEmoji,
             WeatherIcons.SNOW_RAIN_MIX => this.SnowRainMixWeatherEmoji,
             WeatherIcons.SANDSTORM => this.SandstormWeatherEmoji,
+            
             // WeatherWonders Night Events
             WeatherIcons.MOON => this.MoonWeatherEmoji,
             WeatherIcons.BLOOD_MOON => this.BloodMoonWeatherEmoji,
             WeatherIcons.BLUE_MOON => this.BlueMoonWeatherEmoji,
             WeatherIcons.HARVEST_MOON => this.HarvestMoonWeatherEmoji,
-            _ => 0u
+            _ => EmojiSet.ZERO
         };
-        public uint? GetEmoji(SpiritMoods icon) => icon switch {
+        public EmojiSet? GetEmojis(SpiritMoods icon) => icon switch {
             SpiritMoods.VERY_HAPPY => this.VeryHappySpiritEmoji,
             SpiritMoods.GOOD_HUMOR => this.GoodHumorSpiritEmoji,
             SpiritMoods.NEUTRAL => this.NeutralSpiritEmoji,
             SpiritMoods.SOMEWHAT_ANNOYED => this.SomewhatAnnoyedSpiritEmoji,
             SpiritMoods.MILDLY_PERTURBED => this.MildlyPerturbedSpiritEmoji,
             SpiritMoods.VERY_DISPLEASED => this.VeryDispleasedSpiritEmoji,
-            _ => 0u
+            _ => EmojiSet.ZERO
         };
-        public uint? GetEmoji(MiscEmoji icon) => icon switch {
+        public EmojiSet? GetEmojis(MiscEmoji icon) => icon switch {
             MiscEmoji.SPIRITS => this.SpiritsEmoji,
             MiscEmoji.BIRTHDAY => this.BirthdayEmoji,
             MiscEmoji.NEW_RECIPE => this.NewRecipeEmoji,
             MiscEmoji.KNOWN_RECIPE => this.KnownRecipeEmoji,
-            _ => 0u
+            _ => EmojiSet.ZERO
         };
         
         #endregion

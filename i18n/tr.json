@@ -84,6 +84,8 @@
 	"config.icons.weather.sunny.desc": "Ertesi gün güneşliyse göster",
 	"config.icons.weather.rain": "Yağmurlu",
 	"config.icons.weather.rain.desc": "Ertesi gün yağmurluysa göster",
+	"config.icons.weather.green_rain": "Green Rain",
+	"config.icons.weather.green_rain.desc": "Display if there is anomalous rain the next day",
 	"config.icons.weather.thunder": "Gök Gürültülü",
 	"config.icons.weather.thunder.desc": "Ertesi gün gök gürültülüyse göster",
 	"config.icons.weather.snow": "Karlı",

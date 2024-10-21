@@ -84,6 +84,8 @@
 	"config.icons.weather.sunny.desc": "Zeigt an, ob es am nächsten Tag sonnig sein wird.",
 	"config.icons.weather.rain": "Regen",
 	"config.icons.weather.rain.desc": "Zeigt an, ob es am nächsten Tag regnen wird.",
+	"config.icons.weather.green_rain": "Green Rain",
+	"config.icons.weather.green_rain.desc": "Display if there is anomalous rain the next day",
 	"config.icons.weather.thunder": "Gewitter",
 	"config.icons.weather.thunder.desc": "Zeigt an, ob es am nächsten Tag gewittern wird.",
 	"config.icons.weather.snow": "Schnee",

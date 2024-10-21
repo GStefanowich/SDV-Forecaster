@@ -25,6 +25,8 @@
 
 using System;
 using System.Collections.Generic;
+using ForecasterText.Objects.Addons;
+using ForecasterText.Objects.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -49,11 +51,11 @@ namespace ForecasterText.Objects {
         
         private readonly Blink Blinking = new();
         
-        private readonly Func<uint>? Getter;
-        private readonly Action<uint>? Setter;
+        private readonly Func<EmojiSet>? Getter;
+        private readonly Action<EmojiSet>? Setter;
         
-        public override uint Value {
-            get => this.Getter?.Invoke() ?? 0u;
+        public override EmojiSet Value {
+            get => this.Getter?.Invoke() ?? EmojiSet.ZERO;
             set {
                 this.Blinking.Reset();
                 this.Setter?.Invoke(value);
@@ -66,8 +68,8 @@ namespace ForecasterText.Objects {
         public ConfigEmojiMenu(
             Mod mod,
             IConfT9N t9N,
-            Func<uint>? get,
-            Action<uint>? set
+            Func<EmojiSet>? get,
+            Action<EmojiSet>? set
         ) {
             ConfigEmojiMenu.EmojiTextures ??= Game1.content.Load<Texture2D>(@"LooseSprites\emojis");
             ConfigEmojiMenu.ChatBoxTexture ??= Game1.content.Load<Texture2D>(@"LooseSprites\chatBox");
@@ -98,7 +100,9 @@ namespace ForecasterText.Objects {
             base.OnDraw(b, vector);
             this.DrawBox(b, vector);
             
-            //b.Draw(ConfigEmojiMenu.ChatBoxTexture, new Rectangle(vector.X, vector.Y, this.Width, this.Height), new Rectangle?(new Rectangle(0, 0, 300, 56)), Color.White);
+            // Cache the scale update so if multiple emoji are selected we don't call the next scale value multiple times
+            float? scale = null;
+            
             for (int index = 0; index < this.Emojis.Count; ++index) {
                 int offset = index + this.PageIndex;
                 
@@ -107,10 +111,10 @@ namespace ForecasterText.Objects {
                     continue;
                 
                 // Update the scale of the icon
-                bool selected = this.Value == offset;
-                if (selected)
-                    emoji.scale = this.Blinking.Scale;
-                else if (emoji.scale < 1.0)
+                bool selected = this.Value.Contains((uint) offset);
+                if (selected) {
+                    emoji.scale = scale ??= this.Blinking.Scale;
+                } else if (emoji.scale < 1.0)
                     emoji.scale += Blink.SHIFT;
                 
                 // Draw the emoji
@@ -127,7 +131,7 @@ namespace ForecasterText.Objects {
             b.Draw(ConfigEmojiMenu.ChatBoxTexture, new Vector2((float) (this.DownArrow.bounds.X + vector.X + 16), (float) (this.DownArrow.bounds.Y + vector.Y + 10)), new Rectangle(192, 300, 32, 20), Color.White * (this.PageIndex >= this.TotalEmojis - ConfigEmojiMenu.SHIFT ? 0.25f : 1f), 0.0f, new Vector2(16f, 10f), this.DownArrow.scale, SpriteEffects.None, 0.9f);
         }
         
-        protected override void OnClick(Vector2I bounds, Vector2I mouse) {
+        protected override void OnClick(MouseButton button, Vector2I bounds, Vector2I mouse) {
             Rectangle decrease = new(this.UpArrow.bounds.X + bounds.X, this.UpArrow.bounds.Y + bounds.Y, 32, 20);
             Rectangle increase = new(this.DownArrow.bounds.X + bounds.X, this.DownArrow.bounds.Y + bounds.Y, 32, 20);
             
@@ -159,7 +163,18 @@ namespace ForecasterText.Objects {
                     int emote = (int)((row * ConfigEmojiMenu.PER_ROW) + column + this.PageIndex);
                     
                     if (column < ConfigEmojiMenu.PER_ROW && row < ConfigEmojiMenu.ROWS && this.WithinBounds(emote)) {
-                        this.Value = (uint)emote;
+                        // If the player is holding LeftControl then we want to select multiple
+                        if ( this.Mod.Helper.Input.IsDown(SButton.LeftControl) ) {
+                            // If the set already contains the emote
+                            if ( button is MouseButton.RIGHT ) {
+                                this.Value -= (uint)emote;
+                            } else if ( button is MouseButton.LEFT ) {
+                                this.Value += (uint)emote;
+                            }
+                        } else if ( button is MouseButton.LEFT ) {
+                            this.Value = (uint)emote;
+                        }
+                        
                         Game1.playSound("coin");
                     }
                 }
@@ -171,9 +186,10 @@ namespace ForecasterText.Objects {
         
         public void ResetView() {
             this.PageIndex = 0;
+            uint lowest = this.Value.First();
             
             // Make sure we scroll the current emoji into view by default
-            while (this.Value > this.PageIndex + ConfigEmojiMenu.SHIFT)
+            while (lowest > this.PageIndex + ConfigEmojiMenu.SHIFT)
                 this.PageIndex += ConfigEmojiMenu.SHIFT;
             
             this.ResetIcons();

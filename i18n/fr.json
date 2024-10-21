@@ -84,6 +84,8 @@
 	"config.icons.weather.sunny.desc": "Affiche si demain sera ensoleillé",
 	"config.icons.weather.rain": "Pluie",
 	"config.icons.weather.rain.desc": "Affiche s'il pleuvra demain",
+	"config.icons.weather.green_rain": "Green Rain",
+	"config.icons.weather.green_rain.desc": "Display if there is anomalous rain the next day",
 	"config.icons.weather.thunder": "Orage",
 	"config.icons.weather.thunder.desc": "Affiche si un orage aura lieu demain",
 	"config.icons.weather.snow": "Neige",
