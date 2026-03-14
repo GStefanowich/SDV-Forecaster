@@ -4,13 +4,13 @@
         <AssemblyName>ForecasterText</AssemblyName>
         <RootNamespace>ForecasterText</RootNamespace>
         <Version>1.3.0</Version>
-        <TargetFramework>net6.0</TargetFramework>
-        <GamePath>/mnt/gaming/Steam/steamapps/common/Stardew Valley/</GamePath>
+        <TargetFramework>net10.0</TargetFramework>
+        <GamePath>/mnt/zippy/SteamLibrary/steamapps/common/Stardew Valley/</GamePath>
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+        <PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Properties" />
