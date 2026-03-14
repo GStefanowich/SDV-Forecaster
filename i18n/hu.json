@@ -1,0 +1,95 @@
+{
+	"source.tv": "TV: {{content}}",
+	"source.calendar": "Naptár: {{content}}",
+	
+	"tv.spirits": "A{{spirit}}ma{{mood}}kedvűek",
+	"tv.recipe": "{{icon}}Tanulj meg csinálni \"{{recipe}}\"",
+	"tv.birthday": "{{icon}}{{...}}",
+	
+	"tv.weather.pelican_town": "Pelikán Város időjárás előrejelzés {{...}}",
+	"tv.weather.ginger_island": "Gyömbér-Sziget időjárás előrejelzés {{...}}",
+	
+	"config.weather": "Időjárás Mutatása",
+	"config.weather.desc": "Mikor mutassa az időjárás üzeneteket",
+	
+	"config.weather.pelican_town": "Pelikán Város",
+	"config.weather.pelican_town.desc": "Mikor mutassa az időjárást Pelikán Városról",
+	"config.weather.ginger_island": "Gyömbér-Sziget",
+	"config.weather.ginger_island.desc": "Mikor mutassa az időjárást Gyömbér-Szigetről",
+	
+	"config.weather.show.always": "Mindig",
+	"config.weather.show.raining": "Eső",
+	"config.weather.show.not_raining": "Nem esős",
+	"config.weather.show.never": "Soha",
+	
+	"config.birthdays": "Születésnapok mutatása",
+	"config.birthdays.desc": "Mikor mutassa a születésnapok üzeneteit",
+	"config.birthdays.desc2": "Ha a születésnapok mutatva vannak",
+	
+	"config.birthdays.use_names": "Nevek használata",
+	"config.birthdays.use_names.desc": "Lakosok nevének használata a fejük ikonja helyett",
+	
+	"config.luck": "Szerencse mutatása",
+	"config.luck.desc": "Mikor mutassa a szerencse üzeneteket",
+	
+	"config.luck.good": "Mutassa a sok szerencsét",
+	"config.luck.good.desc": "Ha a sok szerencsét üzenetek mutatva vannak",
+	"config.luck.neutral": "Mutassa a neutrális szerencsét",
+	"config.luck.neutral.desc": "Ha a neutrális szerencsét üzenetek mutatva vannak",
+	"config.luck.bad": "Mutassa a rossz szerencsét",
+	"config.luck.bad.desc": "Ha a rossz szerencsét üzenetek mutatva vannak",
+	
+	"config.recipes": "Mutassa a recepteket",
+	"config.recipes.desc": "Mikor mutassa a recepteket",
+	
+	"config.recipes.new": "Mutassa az új recepteket",
+	"config.recipes.new.desc": "Mutassa az üzeneteket még nem tudott receptekhez",
+	"config.recipes.learned": "Mutassa a megtanult recepteket",
+	"config.recipes.learned.desc": "Mutassa az üzeneteket már megtanult receptekhez",
+	
+	"config.multiplayer": "Többjátékos",
+	"config.multiplayer.desc": "Szabd személyre a beállításokat amik más játékosokra vannak használva",
+	
+	"config.multiplayer.share": "Más játékosokkal való megosztás",
+	"config.multiplayer.share.desc": "El fogja küldeni az üzenet riasztásokat más játekosoknak akiknek nincs meg a mod",
+	"config.multiplayer.config": "Használja ugyanazokat a beállításokat",
+	"config.multiplayer.config.desc": "Ha az itt található beállításokat más játékosoknál is használni kell. Amikor riasztásokat küld másik játékosoknak, más opciók is használva lehetnek mint a te preferenciáid. Válasszakik a Többjátékos fejlécet a beállítások testreszabásához.",
+	
+	"config.icons.spirits": "Lélek ikonok",
+	"config.icons.spirits.desc": "Az ikonok amik üzenetben vannak használva a lelkeknek",
+	
+	"config.icons.spirit": "Lelkek",
+	"config.icons.spirits.very_happy": "Nagyon Boldogok",
+	"config.icons.spirits.good_humor": "Jó kedvűek",
+	"config.icons.spirits.neutral": "Neutrálisak",
+	"config.icons.spirits.somewhat_annoyed": "Valamennyire Idegesek",
+	"config.icons.spirits.mildly_perturbed": "Zaklatottak",
+	"config.icons.spirits.very_displeased": "Nagyon elégedetlenek",
+	
+	"config.icons.recipes": "Recept Ikonok",
+	"config.icons.recipes.desc": "Az ikonok amik üzenetben vannak használva a receptekhez",
+	
+	"config.icons.recipes.new": "Új Recept",
+	"config.icons.recipes.learned": "Tudott Recept",
+	
+	"config.icons.birthdays": "Születésnapi Ikonok",
+	"config.icons.birthdays.desc": "A születésnapokra használt ikonok",
+	
+	"config.icons.birthdays.today": "Születésnap Ma",
+	
+	"config.icons.weather": "Időjárás Ikonok",
+	"config.icons.weather.desc": "Az ikonok amik üzenetben vannak használva az időjárásra",
+	
+	"config.icons.weather.sunny": "Napos",
+	"config.icons.weather.sunny.desc": "Mutatja, hogy másnap napos lesz e",
+	"config.icons.weather.rain": "Eső",
+	"config.icons.weather.rain.desc": "Mutatja, hogy másnap eső lesz e",
+	"config.icons.weather.thunder": "Vihar",
+	"config.icons.weather.thunder.desc": "Mutatja, hogy másnap vihar lesz e",
+	"config.icons.weather.snow": "Hó",
+	"config.icons.weather.snow.desc": "Mutatja, hogy másnap havazás lesz e",
+	"config.icons.weather.festival": "Fesztivál",
+	"config.icons.weather.festival.desc": "Mutassa az időjárással ha másnap egy fesztivál lesz",
+	"config.icons.weather.wedding": "Esküvő",
+	"config.icons.weather.wedding.desc": "Mutassa az időjárással ha másnap egy esküvő lesz"
+}
