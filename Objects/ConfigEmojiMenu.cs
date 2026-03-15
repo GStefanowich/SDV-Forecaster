@@ -24,7 +24,9 @@
  */
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
+using System.Linq;
 using ForecasterText.Objects.Addons;
 using ForecasterText.Objects.Enums;
 using Microsoft.Xna.Framework;
@@ -35,6 +37,7 @@ using StardewValley.Menus;
 
 namespace ForecasterText.Objects {
     internal sealed class ConfigEmojiMenu : ConfigEmojiComponent {
+        private const int GAME_EMOJI = 197;
         private const int PER_ROW = 12;
         private const int ROWS = 5;
         private const int SHIFT = ConfigEmojiMenu.ROWS * ConfigEmojiMenu.PER_ROW;
@@ -45,9 +48,10 @@ namespace ForecasterText.Objects {
         internal readonly Mod Mod;
         public readonly IConfT9N T9N;
         
-        private readonly List<ClickableComponent> Emojis = new();
-        private readonly ClickableComponent UpArrow;
-        private readonly ClickableComponent DownArrow;
+        private readonly List<EmojiRegion> Emojis;
+        private readonly List<ClickableComponent> EmojiButtons;
+        private readonly ClickableComponent UpArrowButton;
+        private readonly ClickableComponent DownArrowButton;
         
         private readonly Blink Blinking = new();
         
@@ -81,16 +85,15 @@ namespace ForecasterText.Objects {
             this.Setter = set;
             
             this.Width = (16 + ConfigEmojiMenu.PER_ROW * 10 * 4) + 44; // 300
-            this.Height = (16 + ConfigEmojiMenu.ROWS * 10 * 4) + 32;// 248
+            this.Height = (16 + ConfigEmojiMenu.ROWS * 10 * 4) + 32; // 248
             
-            for (int row = 0; row < ConfigEmojiMenu.ROWS; row++)
-                for (int e = 0; e < ConfigEmojiMenu.PER_ROW; e++)
-                    this.Emojis.Add(new ClickableComponent(new Rectangle(16 + e * 10 * 4, 16 + row * 10 * 4, 36, 36), (row + e * ConfigEmojiMenu.PER_ROW).ToString() ?? ""));
+            this.Emojis = new List<EmojiRegion>();
+            this.EmojiButtons = ConfigEmojiMenu.GenerateImageRegions()
+                .ToList();
+            this.UpArrowButton = new ClickableComponent(new Rectangle(16 + ConfigEmojiMenu.PER_ROW * 10 * 4, 16, 32, 20), "");
+            this.DownArrowButton = new ClickableComponent(new Rectangle(16 + ConfigEmojiMenu.PER_ROW * 10 * 4, 156, 32, 20), "");
             
-            this.UpArrow = new ClickableComponent(new Rectangle(16 + ConfigEmojiMenu.PER_ROW * 10 * 4, 16, 32, 20), "");
-            this.DownArrow = new ClickableComponent(new Rectangle(16 + ConfigEmojiMenu.PER_ROW * 10 * 4, 156, 32, 20), "");
-            
-            // Total amount of emojis based on the sheet size (9 width * 9 height per emoji)
+            // Total possible amount of emojis based on the sheet size (9 width * 9 height per emoji)
             this.TotalEmojis = ConfigEmojiMenu.EmojiTextures.Width / 9 * (ConfigEmojiMenu.EmojiTextures.Height / 9);
             
             this.ResetView();
@@ -103,44 +106,54 @@ namespace ForecasterText.Objects {
             // Cache the scale update so if multiple emoji are selected we don't call the next scale value multiple times
             float? scale = null;
             
-            for (int index = 0; index < this.Emojis.Count; ++index) {
-                int offset = index + this.PageIndex;
-                
+            int max = Math.Min(this.EmojiButtons.Count, this.Emojis.Count);
+            
+            for (int index = 0; index < max; ++index) {
                 // Get the emoji
-                if (this.Emojis[index] is not ClickableComponent emoji || !this.WithinBounds(offset))
-                    continue;
+                EmojiRegion data = this.Emojis[index];
+                ClickableComponent emoji = this.EmojiButtons[index];
                 
                 // Update the scale of the icon
-                bool selected = this.Value.Contains((uint) offset);
+                bool selected = this.Value.Contains(data.Id);
                 if (selected) {
                     emoji.scale = scale ??= this.Blinking.Scale;
                 } else if (emoji.scale < 1.0)
                     emoji.scale += Blink.SHIFT;
                 
                 // Draw the emoji
-                b.Draw(ConfigEmojiMenu.EmojiTextures, new Vector2((float) (emoji.bounds.X + vector.X + 16), (float) (emoji.bounds.Y + vector.Y + 16)), new Rectangle((this.PageIndex + index) * 9 % ConfigEmojiMenu.EmojiTextures!.Width, (this.PageIndex + index) * 9 / ConfigEmojiMenu.EmojiTextures.Width * 9, 9, 9), selected ? Color.White : (Color.DimGray * 0.8f), 0.0f, new Vector2(4.5f, 4.5f), emoji.scale * 4f, SpriteEffects.None, 0.9f);
+                b.Draw(
+                    ConfigEmojiMenu.EmojiTextures,
+                    new Vector2((float) (emoji.bounds.X + vector.X + 16), (float) (emoji.bounds.Y + vector.Y + 16)),
+                    data.Rectangle,
+                    selected ? Color.White : (Color.DimGray * 0.8f),
+                    0.0f,
+                    new Vector2(4.5f, 4.5f),
+                    emoji.scale * 4f,
+                    SpriteEffects.None,
+                    0.9f
+                );
             }
             
-            if (this.UpArrow.scale < 1.0)
-                this.UpArrow.scale += 0.05f;
-            if (this.DownArrow.scale < 1.0)
-                this.DownArrow.scale += 0.05f;
+            if (this.UpArrowButton.scale < 1.0)
+                this.UpArrowButton.scale += 0.05f;
+            if (this.DownArrowButton.scale < 1.0)
+                this.DownArrowButton.scale += 0.05f;
             
             // Draw the up/down buttons
-            b.Draw(ConfigEmojiMenu.ChatBoxTexture, new Vector2((float) (this.UpArrow.bounds.X + vector.X + 16), (float) (this.UpArrow.bounds.Y + vector.Y + 10)), new Rectangle(156, 300, 32, 20), Color.White * (this.PageIndex == 0 ? 0.25f : 1f), 0.0f, new Vector2(16f, 10f), this.UpArrow.scale, SpriteEffects.None, 0.9f);
-            b.Draw(ConfigEmojiMenu.ChatBoxTexture, new Vector2((float) (this.DownArrow.bounds.X + vector.X + 16), (float) (this.DownArrow.bounds.Y + vector.Y + 10)), new Rectangle(192, 300, 32, 20), Color.White * (this.PageIndex >= this.TotalEmojis - ConfigEmojiMenu.SHIFT ? 0.25f : 1f), 0.0f, new Vector2(16f, 10f), this.DownArrow.scale, SpriteEffects.None, 0.9f);
+            b.Draw(ConfigEmojiMenu.ChatBoxTexture, new Vector2((float) (this.UpArrowButton.bounds.X + vector.X + 16), (float) (this.UpArrowButton.bounds.Y + vector.Y + 10)), new Rectangle(156, 300, 32, 20), Color.White * (this.PageIndex == 0 ? 0.25f : 1f), 0.0f, new Vector2(16f, 10f), this.UpArrowButton.scale, SpriteEffects.None, 0.9f);
+            b.Draw(ConfigEmojiMenu.ChatBoxTexture, new Vector2((float) (this.DownArrowButton.bounds.X + vector.X + 16), (float) (this.DownArrowButton.bounds.Y + vector.Y + 10)), new Rectangle(192, 300, 32, 20), Color.White * (this.PageIndex >= this.TotalEmojis - ConfigEmojiMenu.SHIFT ? 0.25f : 1f), 0.0f, new Vector2(16f, 10f), this.DownArrowButton.scale, SpriteEffects.None, 0.9f);
         }
         
         protected override void OnClick(MouseButton button, Vector2I bounds, Vector2I mouse) {
-            Rectangle decrease = new(this.UpArrow.bounds.X + bounds.X, this.UpArrow.bounds.Y + bounds.Y, 32, 20);
-            Rectangle increase = new(this.DownArrow.bounds.X + bounds.X, this.DownArrow.bounds.Y + bounds.Y, 32, 20);
+            Rectangle decrease = new(this.UpArrowButton.bounds.X + bounds.X, this.UpArrowButton.bounds.Y + bounds.Y, 32, 20);
+            Rectangle increase = new(this.DownArrowButton.bounds.X + bounds.X, this.DownArrowButton.bounds.Y + bounds.Y, 32, 20);
             
             if (mouse.IsIn(decrease)) {
                 if (this.PageIndex != 0)
                     Game1.playSound("Cowboy_Footstep");
                 
                 this.PageIndex = Math.Max(0, this.PageIndex - ConfigEmojiMenu.SHIFT);
-                this.UpArrow.scale = 0.75f;
+                this.UpArrowButton.scale = 0.75f;
                 
                 this.ResetIcons();
             } else if (mouse.IsIn(increase)) {
@@ -148,7 +161,7 @@ namespace ForecasterText.Objects {
                     Game1.playSound("Cowboy_Footstep");
                 
                 this.PageIndex = Math.Min(this.PageIndex + ConfigEmojiMenu.SHIFT, ConfigEmojiMenu.SHIFT * (int)(Math.Floor((double)this.TotalEmojis / ConfigEmojiMenu.SHIFT)));
-                this.DownArrow.scale = 0.75f;
+                this.DownArrowButton.scale = 0.75f;
                 
                 this.ResetIcons();
             } else {
@@ -160,22 +173,26 @@ namespace ForecasterText.Objects {
                 if (top >= 0.0f && left >= 0.0f) {
                     uint column = (uint)Math.Floor(left);
                     uint row = (uint)Math.Floor(top);
-                    int emote = (int)((row * ConfigEmojiMenu.PER_ROW) + column + this.PageIndex);
                     
-                    if (column < ConfigEmojiMenu.PER_ROW && row < ConfigEmojiMenu.ROWS && this.WithinBounds(emote)) {
-                        // If the player is holding LeftControl then we want to select multiple
-                        if ( this.Mod.Helper.Input.IsDown(SButton.LeftControl) ) {
-                            // If the set already contains the emote
-                            if ( button is MouseButton.RIGHT ) {
-                                this.Value -= (uint)emote;
+                    if (column < ConfigEmojiMenu.PER_ROW && row < ConfigEmojiMenu.ROWS) {
+                        int cursor = (int)((row * ConfigEmojiMenu.PER_ROW) + column);
+                        if ( cursor < this.Emojis.Count ) {
+                            EmojiRegion data = this.Emojis[cursor];
+                            
+                            // If the player is holding LeftControl then we want to select multiple
+                            if ( this.Mod.Helper.Input.IsDown(SButton.LeftControl) ) {
+                                // If the set already contains the emote
+                                if ( button is MouseButton.RIGHT ) {
+                                    this.Value -= data.Id;
+                                } else if ( button is MouseButton.LEFT ) {
+                                    this.Value += data.Id;
+                                }
                             } else if ( button is MouseButton.LEFT ) {
-                                this.Value += (uint)emote;
+                                this.Value = data.Id;
                             }
-                        } else if ( button is MouseButton.LEFT ) {
-                            this.Value = (uint)emote;
+                            
+                            Game1.playSound("coin");
                         }
-                        
-                        Game1.playSound("coin");
                     }
                 }
             }
@@ -196,11 +213,73 @@ namespace ForecasterText.Objects {
         }
         
         public void ResetIcons() {
+            // Calculate emojis by ignoring any that have a solid texture
+            this.Emojis.Clear();
+            this.Emojis.AddRange(this.GetEmojiFromSheet());
+            
             // Reset the emoji scale
-            this.Emojis.ForEach(icon => icon.scale = 1.0f);
+            this.EmojiButtons.ForEach(icon => icon.scale = 1.0f);
             
             // Reset the pulse
             this.Blinking.Reset();
+        }
+        
+        private bool IsMuteImageTile(Color[] color, Rectangle rectangle, int startRow = 0) {
+            int pixelCount = rectangle.Width * rectangle.Height;
+            int firstPixel = startRow * rectangle.Width;
+            int lastPixel = firstPixel + pixelCount - 1;
+            
+            if ( firstPixel >= 0 ) {
+                Color first = color[firstPixel];
+                
+                for ( int i = firstPixel + 1; i <= lastPixel; i++ ) {
+                    if ( !first.Equals(color[i]) ) {
+                        return false;
+                    }
+                }
+            }
+            
+            return true;
+        }
+        
+        private IEnumerable<EmojiRegion> GetEmojiFromSheet() {
+            for (int index = 0; index < this.EmojiButtons.Count; ++index) {
+                int offset = index + this.PageIndex;
+                
+                Rectangle sourceRectangle = new(
+                    offset * 9 % ConfigEmojiMenu.EmojiTextures!.Width,
+                    offset * 9 / ConfigEmojiMenu.EmojiTextures.Width * 9,
+                    9,
+                    9
+                );
+                
+                if (ConfigEmojiMenu.EmojiTextures.Bounds.Contains(sourceRectangle)) {
+                    int pixelCount = sourceRectangle.Width * sourceRectangle.Height;
+                    Color[] sourceData = ArrayPool<Color>.Shared.Rent(pixelCount);
+                    try {
+                        // Get the data of the area of the texture file
+                        ConfigEmojiMenu.EmojiTextures.GetData(0, sourceRectangle, sourceData, 0, pixelCount);
+                        
+                        // If the area is not fully transparent or a shared color
+                        if (!this.IsMuteImageTile(sourceData, sourceRectangle)) {
+                            yield return new EmojiRegion {
+                                Id = (uint)offset,
+                                Rectangle = sourceRectangle
+                            };
+                        }
+                    } finally {
+                        ArrayPool<Color>.Shared.Return(sourceData);
+                    }
+                }
+            }
+        }
+        
+        private static IEnumerable<ClickableComponent> GenerateImageRegions() {
+            for (int row = 0; row < ConfigEmojiMenu.ROWS; row++) {
+                for (int e = 0; e < ConfigEmojiMenu.PER_ROW; e++) {
+                    yield return new ClickableComponent(new Rectangle(16 + e * 10 * 4, 16 + row * 10 * 4, 36, 36), (row + e * ConfigEmojiMenu.PER_ROW).ToString());
+                }
+            }
         }
     }
 }
