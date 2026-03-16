@@ -52,7 +52,7 @@ namespace ForecasterText {
         public EmojiSet AcidRainWeatherEmoji { get; set; } = Emoji.BROKEN_HEART;
         public EmojiSet BlizzardWeatherEmoji { get; set; } = new[] { Emoji.SNOWFLAKE, Emoji.SNOWFLAKE, Emoji.SNOWFLAKE };
         public EmojiSet CloudyWeatherEmoji { get; set; } = Emoji.BUTTERFLY;
-        public EmojiSet DilugeWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.SWIRL };
+        public EmojiSet DelugeWeatherEmoji { get; set; } = new[] { Emoji.RAINDROPS, Emoji.SWIRL };
         public EmojiSet DrizzleWeatherEmoji { get; set; } = Emoji.WATER_DROPLET;
         public EmojiSet DryLightningWeatherEmoji { get; set; } = Emoji.LIGHTNING;
         public EmojiSet HailstormWeatherEmoji { get; set; } = new[] { Emoji.SNOWFLAKE, Emoji.BREAKING_HEART };
@@ -127,7 +127,7 @@ namespace ForecasterText {
             WeatherIcons.ACID_RAIN => this.AcidRainWeatherEmoji,
             WeatherIcons.BLIZZARD => this.BlizzardWeatherEmoji,
             WeatherIcons.CLOUDY => this.CloudyWeatherEmoji,
-            WeatherIcons.DILUGE => this.DilugeWeatherEmoji,
+            WeatherIcons.DELUGE => this.DelugeWeatherEmoji,
             WeatherIcons.DRIZZLE => this.DrizzleWeatherEmoji,
             WeatherIcons.DRY_LIGHTNING => this.DryLightningWeatherEmoji,
             WeatherIcons.HAILSTORM => this.HailstormWeatherEmoji,

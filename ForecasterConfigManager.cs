@@ -296,9 +296,9 @@ namespace ForecasterText {
                     message => this.WeatherExampleMessage(message, WeatherIcons.CLOUDY)?.Write(config, this.Translations)
                 );
                 this.AddEmojiSelector("icons.weather.deluge",
-                    () => config.DilugeWeatherEmoji,
-                    i => config.DilugeWeatherEmoji = i,
-                    message => this.WeatherExampleMessage(message, WeatherIcons.DILUGE)?.Write(config, this.Translations)
+                    () => config.DelugeWeatherEmoji,
+                    i => config.DelugeWeatherEmoji = i,
+                    message => this.WeatherExampleMessage(message, WeatherIcons.DELUGE)?.Write(config, this.Translations)
                 );
                 this.AddEmojiSelector("icons.weather.drizzle",
                     () => config.DrizzleWeatherEmoji,

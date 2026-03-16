@@ -42,7 +42,7 @@ namespace ForecasterText.Objects.Addons {
             WeatherIcons.ACID_RAIN => WeatherWondersIds.acid_rain,
             WeatherIcons.BLIZZARD => WeatherWondersIds.blizzard,
             WeatherIcons.CLOUDY => WeatherWondersIds.cloudy,
-            WeatherIcons.DILUGE => WeatherWondersIds.deluge,
+            WeatherIcons.DELUGE => WeatherWondersIds.deluge,
             WeatherIcons.DRIZZLE => WeatherWondersIds.drizzle,
             WeatherIcons.DRY_LIGHTNING => WeatherWondersIds.dry_lightning,
             WeatherIcons.HAILSTORM => WeatherWondersIds.hailstorm,

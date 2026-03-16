@@ -64,7 +64,7 @@ namespace ForecasterText.Objects.Messages {
                 WeatherWondersIds.acid_rain => WeatherIcons.ACID_RAIN,
                 WeatherWondersIds.blizzard => WeatherIcons.BLIZZARD,
                 WeatherWondersIds.cloudy => WeatherIcons.CLOUDY,
-                WeatherWondersIds.deluge => WeatherIcons.DILUGE,
+                WeatherWondersIds.deluge => WeatherIcons.DELUGE,
                 WeatherWondersIds.drizzle => WeatherIcons.DRIZZLE,
                 WeatherWondersIds.dry_lightning => WeatherIcons.DRY_LIGHTNING,
                 WeatherWondersIds.hailstorm => WeatherIcons.HAILSTORM,

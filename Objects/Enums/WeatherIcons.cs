@@ -37,7 +37,7 @@ namespace ForecasterText.Objects.Enums {
         ACID_RAIN,
         BLIZZARD,
         CLOUDY,
-        DILUGE,
+        DELUGE,
         DRIZZLE,
         DRY_LIGHTNING,
         HAILSTORM,
