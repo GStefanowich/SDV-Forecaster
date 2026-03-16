@@ -61,7 +61,7 @@ namespace ForecasterText.Objects.Messages {
                             => builder.AddEmoji("...", character),
                         string name when CharacterEmoji.HasEmoji(name)
                             => builder.AddNpcEmoji("...", name),
-                        _ => null
+                        _ => null,
                     } is not null)
                         continue; // Continue to next to skip fallback to name (For custom NPCs)
                 }

@@ -76,7 +76,7 @@ namespace ForecasterText.Objects.Messages {
                 WeatherWondersIds.blood_moon => WeatherIcons.BLOOD_MOON,
                 WeatherWondersIds.blue_moon => WeatherIcons.BLUE_MOON,
                 WeatherWondersIds.harvest_moon => WeatherIcons.HARVEST_MOON,
-                _ => null
+                _ => null,
             };
             
             // If no icons, or no results
@@ -120,8 +120,8 @@ namespace ForecasterText.Objects.Messages {
                     WeatherWondersIds.blood_moon => display is WeatherDisplay.NOT_RAINING,
                     WeatherWondersIds.blue_moon => display is WeatherDisplay.NOT_RAINING,
                     WeatherWondersIds.harvest_moon => display is WeatherDisplay.NOT_RAINING,
-                    _ => false
-                }
+                    _ => false,
+                },
             };
         }
         

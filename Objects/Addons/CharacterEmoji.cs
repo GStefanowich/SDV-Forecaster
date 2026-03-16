@@ -32,7 +32,7 @@ namespace ForecasterText.Objects.Addons {
         public static string GetName(this Character character)
             => character switch {
                 NPC npc => npc.getName(),
-                _ => character.Name
+                _ => character.Name,
             };
         
         public static bool HasEmoji(this Character character)
@@ -78,7 +78,7 @@ namespace ForecasterText.Objects.Addons {
                 "george" => Emoji.GEORGE,
                 "demetrius" => Emoji.DEMETRIUS,
                 "clint" => Emoji.CLINT,
-                _ => null
+                _ => null,
             };
     }
 }

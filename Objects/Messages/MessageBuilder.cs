@@ -75,7 +75,7 @@ namespace ForecasterText.Objects.Messages {
             => this.Add(key, icon);
         public MessageBuilder AddEmoji(string key, Character character) => character switch {
             NPC npc => this.AddNpcEmoji(key, npc.getName()),
-            _ => this
+            _ => this,
         };
         public MessageBuilder AddNpcEmoji(string key, string name) => this.AddEmoji(key, CharacterEmoji.GetEmoji(name));
         
@@ -104,7 +104,7 @@ namespace ForecasterText.Objects.Messages {
                         SpiritMoods mood => config.GetEmojis(mood),
                         WeatherIcons weather => config.GetEmojis(weather),
                         MiscEmoji emoji => config.GetEmojis(emoji),
-                        _ => raw
+                        _ => raw,
                     };
                     
                     if (cast is null)
@@ -113,7 +113,7 @@ namespace ForecasterText.Objects.Messages {
                     intern.Append(cast switch {
                         EmojiSet set => string.Join("", set.Select(i => $"[{i}]")),
                         uint id => $"[{id}]",
-                        _ => cast
+                        _ => cast,
                     });
                     //intern.Append(cast is uint i ? $"[{i}]" : cast);
                 }

@@ -111,7 +111,7 @@ namespace ForecasterText {
             public string? GetAnyRecipe() => this.DayOfWeek switch {
                 DayOfWeek.Sunday or DayOfWeek.Wednesday => this.GetRegularRecipes(),
                 DayOfWeek.Friday => this.GetAnimalHusbandryRecipes(),
-                _ => null
+                _ => null,
             };
             
             private string? GetRegularRecipes() {

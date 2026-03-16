@@ -142,7 +142,7 @@ namespace ForecasterText {
             WeatherIcons.BLOOD_MOON => this.BloodMoonWeatherEmoji,
             WeatherIcons.BLUE_MOON => this.BlueMoonWeatherEmoji,
             WeatherIcons.HARVEST_MOON => this.HarvestMoonWeatherEmoji,
-            _ => EmojiSet.ZERO
+            _ => EmojiSet.ZERO,
         };
         public EmojiSet? GetEmojis(SpiritMoods icon) => icon switch {
             SpiritMoods.VERY_HAPPY => this.VeryHappySpiritEmoji,
@@ -151,14 +151,14 @@ namespace ForecasterText {
             SpiritMoods.SOMEWHAT_ANNOYED => this.SomewhatAnnoyedSpiritEmoji,
             SpiritMoods.MILDLY_PERTURBED => this.MildlyPerturbedSpiritEmoji,
             SpiritMoods.VERY_DISPLEASED => this.VeryDispleasedSpiritEmoji,
-            _ => EmojiSet.ZERO
+            _ => EmojiSet.ZERO,
         };
         public EmojiSet? GetEmojis(MiscEmoji icon) => icon switch {
             MiscEmoji.SPIRITS => this.SpiritsEmoji,
             MiscEmoji.BIRTHDAY => this.BirthdayEmoji,
             MiscEmoji.NEW_RECIPE => this.NewRecipeEmoji,
             MiscEmoji.KNOWN_RECIPE => this.KnownRecipeEmoji,
-            _ => EmojiSet.ZERO
+            _ => EmojiSet.ZERO,
         };
         
         #endregion
