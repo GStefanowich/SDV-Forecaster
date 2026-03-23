@@ -64,7 +64,7 @@ Thanks so much to the following users for contributing translations to this mod:
 | :cn: Chinese          | [@GraceFu](https://www.github.com/GraceFu)     |
 | :fr: French           | [@Shimaebae](https://www.github.com/Shimaebae) |
 | :de: German           | [@Vomau](https://www.github.com/Vomau)         |
-| :hungary: Hungarian   | N/A                                            |
+| :hungary: Hungarian   | [@FlawRest](https://www.github.com/FlawRest)   |
 | :it: Italian          | [@AlixNauts](https://www.github.com/AlixNauts) |
 | :jp: Japanese         | N/A                                            |
 | :kr: Korean           | N/A                                            |
